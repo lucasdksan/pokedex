@@ -5,6 +5,8 @@ export const colors = {
     DangerColor: "#D93E30",
     WhiteColor: "#F6F7F9",
     DarkColor: "#212121",
+    BlackColors: "#000000",
+    BtnColor: "#73D677",
     Deuteranopia: {
         d1: "#FAD942",
         d2: "#DCBF36",
