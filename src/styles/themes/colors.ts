@@ -1,9 +1,12 @@
 export const colors = {
+    YellowColor: "#F2CB07",
     ThirdColor: "#F5DB13",
     PrimaryColor: "#F2B807",
     SecondColor: "#F28F16",
     DangerColor: "#D93E30",
     WhiteColor: "#F6F7F9",
+    WhiteSecondColor: "#F2F2F2",
+    FullWhite: "#FFFFFF",
     DarkColor: "#212121",
     BlackColors: "#000000",
     BtnColor: "#73D677",

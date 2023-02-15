@@ -25,7 +25,7 @@ export const Container = styled.main`
                     margin-bottom: 30px;
 
                     h1 {
-                        font-family: "Karla";
+                        font-family: ${fonts.main};
                         font-style: normal;
                         font-weight: 400;
                         font-size: 72px;
