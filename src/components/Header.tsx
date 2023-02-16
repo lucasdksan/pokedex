@@ -1,8 +1,55 @@
+import { Link } from "react-router-dom";
 import { Container, ContentOptions, Elements, LeftArea, Nav, RightArea, ContentBody } from "../styles/components/Header";
 
 import Logo from "../assets/header/Logo.svg";
+import { useEffect, useState } from "react";
 
 const Header = () => {
+    const [ keys, setKeys ] = useState({
+        home: true,
+        pokedex: false,
+        legen: false,
+        doc: false
+    });
+
+    function handlerURL(){
+        const url = window.location.pathname;
+
+        if(url === "/"){
+            setKeys({
+                home: true,
+                pokedex: false,
+                legen: false,
+                doc: false
+            });
+        } else if(url === "pokedex"){
+            setKeys({
+                home: false,
+                pokedex: true,
+                legen: false,
+                doc: false
+            });
+        } else if(url === "legendaries"){
+            setKeys({
+                home: false,
+                pokedex: false,
+                legen: true,
+                doc: false
+            });
+        } else {
+            setKeys({
+                home: false,
+                pokedex: false,
+                legen: false,
+                doc: true
+            });
+        }
+    }
+
+    useEffect(()=>{
+        handlerURL();
+    },[]);
+
     return (
         <Container>
             <ContentBody>
@@ -13,16 +60,31 @@ const Header = () => {
                     <Nav>
                         <ContentOptions>
                             <Elements>
-                                <a href="">Home</a>
+                                <Link 
+                                    className={keys.home ? "active" : ""} 
+                                    to="/"
+                                    onClick={handlerURL}
+                                >Home</Link>
+                            </Elements>
+                            <Elements >
+                                <Link 
+                                    className={keys.pokedex ? "active" : ""} 
+                                    to="/pokedex"
+                                >Pokédex</Link>
+                            </Elements>
+                            <Elements >
+                                <Link 
+                                    className={keys.legen ? "active" : ""} 
+                                    to="/legendaries"
+                                    onClick={handlerURL}
+                                >Legendaries</Link>
                             </Elements>
                             <Elements>
-                                <a href="">Pokédex</a>
-                            </Elements>
-                            <Elements>
-                                <a href="">Legendaries</a>
-                            </Elements>
-                            <Elements>
-                                <a href="">Documentation</a>
+                                <Link 
+                                    className={keys.doc ? "active" : ""} 
+                                    to="/doc"
+                                    onClick={handlerURL}
+                                >Documentation</Link>
                             </Elements>
                         </ContentOptions>
                     </Nav>

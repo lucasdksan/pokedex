@@ -1,13 +1,13 @@
-// import Error from "./pages/Error";
-// import Home from "./pages/Home";
-import Search from "./pages/Search";
+import { RouterProvider } from "react-router-dom";
+import router from "./router";
+
 import GlobalStyles from "./styles/GlobalStyles";
 
 function App() {
   return (
     <>
       <GlobalStyles />
-      <Search />
+      <RouterProvider router={router} />
     </>
   )
 }

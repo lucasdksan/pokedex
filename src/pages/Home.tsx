@@ -1,8 +1,10 @@
-import { Container } from "../styles/pages/Home";
+import { Link } from "react-router-dom";
 
 import Header from "../components/Header";
 
 import Banner from "../assets/home/banner.svg";
+
+import { Container } from "../styles/pages/Home";
 
 const Home = () => {
     return (
@@ -18,9 +20,9 @@ const Home = () => {
                             <p>You can know the type of Pokemon, its strengths, disadvantages and abilities</p>
                         </div>
                         <div className="bottomContent">
-                            <a href="">
+                            <Link to="/pokedex">
                                 <span>See pokemons</span>
-                            </a>
+                            </Link>
                         </div>
                     </aside>
                     <img src={Banner} alt="Banner home image" />
