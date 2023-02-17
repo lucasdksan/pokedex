@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import { Container } from "../styles/pages/Error";
 
 import error from "../assets/error/teamRocket.svg";
@@ -12,9 +14,9 @@ const Error = ()=>{
                 </div>
                 <div className="bottomContainer">
                     <p>The rocket team <span>has won this time.</span></p>
-                    <a href="">
+                    <Link to="/">
                         Return
-                    </a>
+                    </Link>
                 </div>
             </section>
         </Container>

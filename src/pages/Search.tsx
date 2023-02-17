@@ -23,10 +23,10 @@ const Search = ()=>{
                                 <option value="grass">Grass</option>
                             </select>
                             <select name="attack" id="typeAttack">
-                                <option>Attack</option>
+                                <option>Rarity</option>
                             </select>
                             <select name="exp" id="typeExp">
-                                <option>Exp</option>
+                                <option>Region</option>
                             </select>
                         </div>
                     </div>
