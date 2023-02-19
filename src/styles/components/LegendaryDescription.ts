@@ -12,7 +12,6 @@ export const Container = styled.div`
     .topContent {
         display: flex;
         flex-direction: row;
-        margin-bottom: 10px;
 
         .leftArea {
             width: 60%;
@@ -83,6 +82,7 @@ export const Container = styled.div`
     }
 
     .bottomContent {
+        margin-top: 40px;
         width: 100%;
         height: 200px;
     }

@@ -12,6 +12,7 @@ export const Container = styled.div`
     overflow: hidden;
     width: 130px;
     height: 180px;
+    cursor: pointer;
 
     .pokeMainImage {
         width: 100%;

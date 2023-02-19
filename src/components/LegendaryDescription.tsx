@@ -5,14 +5,18 @@ import "slick-carousel/slick/slick-theme.css";
 import { Container } from "../styles/components/LegendaryDescription";
 import LegendaryCard from "./LegendaryCard";
 import LineStatus from "./LineStatus";
+import { CustomArrowLeft, CustomArrowRight } from "./CustomArrows";
 
 const LegendaryDescription = () => {
     const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 6,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        centerMode: true,
+        nextArrow: <CustomArrowRight />,
+        prevArrow: <CustomArrowLeft />
     };
 
     return (
