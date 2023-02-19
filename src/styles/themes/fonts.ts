@@ -1,4 +1,5 @@
 export const fonts = {
     main: "Karla",
-    sub: "Source Sans Pro"
+    sub: "Source Sans Pro",
+    robo: "Roboto"
 };

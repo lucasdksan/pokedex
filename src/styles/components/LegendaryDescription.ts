@@ -5,13 +5,14 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
     height: 100vh;
 
     .topContent {
         display: flex;
         flex-direction: row;
+        margin-bottom: 10px;
 
         .leftArea {
             width: 60%;
@@ -79,5 +80,10 @@ export const Container = styled.div`
                 }
             }
         }
+    }
+
+    .bottomContent {
+        width: 100%;
+        height: 200px;
     }
 `;
