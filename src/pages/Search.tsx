@@ -1,5 +1,12 @@
+import CustomSelectComponent from "../components/CustomSelectComponent";
 import Header from "../components/Header";
 import { Container } from "../styles/pages/Search";
+import { 
+        CustomSelectComponentDataRarity, 
+        CustomSelectComponentDataRegion, 
+        CustomSelectComponentDataType 
+    } from "../data/CustomSelectComponentData";
+import CardSearchPoke from "../components/CardSearchPoke";
 
 const Search = ()=>{
     return(
@@ -14,24 +21,35 @@ const Search = ()=>{
                             placeholder="Search Pokémon..."
                         />
                         <div className="lineOptions">
-                            <select name="type" id="typeInput">
-                                <option>TYPE</option>
-                                <option value="fire">Fire</option>
-                                <option value="water">Water</option>
-                                <option value="rock">Rock</option>
-                                <option value="ground">Ground</option>
-                                <option value="grass">Grass</option>
-                            </select>
-                            <select name="attack" id="typeAttack">
-                                <option>Rarity</option>
-                            </select>
-                            <select name="exp" id="typeExp">
-                                <option>Region</option>
-                            </select>
+                            <CustomSelectComponent 
+                                arrOptions={CustomSelectComponentDataType}
+                                firstElement="Type"
+                            />
+                            {/* <CustomSelectComponent 
+                                arrOptions={CustomSelectComponentDataRarity}
+                                firstElement="Rarity"
+                            /> */}
+                            <CustomSelectComponent 
+                                arrOptions={CustomSelectComponentDataRegion}
+                                firstElement="Region"
+                            />
                         </div>
                     </div>
                     <div className="contentList">
-
+                        <CardSearchPoke 
+                            image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
+                            name="Ditto"
+                            typing="Normal"
+                            valueAttk={48}
+                            valueDef={48}
+                        />
+                        <CardSearchPoke 
+                            image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
+                            name="Ditto"
+                            typing={["Normal", "Grass"]}
+                            valueAttk={150}
+                            valueDef={48}
+                        />
                     </div>
                 </section>
             </Container>    

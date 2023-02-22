@@ -16,4 +16,14 @@ export const Container = styled.select`
     &:last-child {
         margin-right: 0px;
     }
+
+    option {
+        font-family: ${fonts.sub};
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: center;
+        color: ${colors.BlackColors};
+    }
 `;
