@@ -10,6 +10,7 @@ export const colors = {
     FullWhite: "#FFFFFF",
     DarkColor: "#212121",
     BlackColors: "#000000",
+    GrayColorText: "#4B4B4B",
     BtnColor: "#73D677",
     Deuteranopia: {
         d1: "#FAD942",

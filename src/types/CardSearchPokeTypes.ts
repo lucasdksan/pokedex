@@ -5,3 +5,7 @@ export type CardSearchPokeTypes = {
     typing: string[] | string;
     image: string;
 }
+
+export type CardSearchPokeTypesCss = {
+    colorCss: string;
+}

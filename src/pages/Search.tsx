@@ -7,6 +7,7 @@ import {
         CustomSelectComponentDataType 
     } from "../data/CustomSelectComponentData";
 import CardSearchPoke from "../components/CardSearchPoke";
+import ModalOpenCard from "../components/ModalOpenCard";
 
 const Search = ()=>{
     return(
@@ -39,6 +40,13 @@ const Search = ()=>{
                         <CardSearchPoke 
                             image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
                             name="Ditto"
+                            typing={["Normal", "Grass"]}
+                            valueAttk={150}
+                            valueDef={48}
+                        />
+                        <CardSearchPoke 
+                            image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
+                            name="Ditto"
                             typing="Normal"
                             valueAttk={48}
                             valueDef={48}
@@ -46,13 +54,56 @@ const Search = ()=>{
                         <CardSearchPoke 
                             image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
                             name="Ditto"
-                            typing={["Normal", "Grass"]}
+                            typing={["Fire", "Grass"]}
+                            valueAttk={150}
+                            valueDef={48}
+                        />
+                        <CardSearchPoke 
+                            image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
+                            name="Ditto"
+                            typing={["Ice", "Grass"]}
+                            valueAttk={150}
+                            valueDef={48}
+                        />
+                        <CardSearchPoke 
+                            image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
+                            name="Ditto"
+                            typing={["Ghost", "Grass"]}
+                            valueAttk={150}
+                            valueDef={48}
+                        />
+                        <CardSearchPoke 
+                            image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
+                            name="Ditto"
+                            typing={["Rock", "Grass"]}
+                            valueAttk={150}
+                            valueDef={48}
+                        />
+                        <CardSearchPoke 
+                            image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
+                            name="Ditto"
+                            typing={["Fairy", "Grass"]}
+                            valueAttk={150}
+                            valueDef={48}
+                        />
+                        <CardSearchPoke 
+                            image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
+                            name="Ditto"
+                            typing={["Water", "Grass"]}
+                            valueAttk={150}
+                            valueDef={48}
+                        />
+                        <CardSearchPoke 
+                            image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
+                            name="Ditto"
+                            typing={["Water", "Grass"]}
                             valueAttk={150}
                             valueDef={48}
                         />
                     </div>
                 </section>
-            </Container>    
+            </Container>
+            <ModalOpenCard />
         </>
     );
 }

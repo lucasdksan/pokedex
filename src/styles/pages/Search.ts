@@ -4,7 +4,7 @@ import { colors, fonts, sizes } from "../themes";
 export const Container = styled.div`
     margin-top: 90px;
     width: 100vw;
-    height: 100vh;
+    height: auto;
     padding: 40px 10px;
     background-color: ${colors.FullWhite};
 
@@ -35,6 +35,7 @@ export const Container = styled.div`
                 align-items: flex-start;
                 justify-content: center;
                 width: 100%;
+                margin-bottom: 15px;
 
                 input {
                     background: ${colors.WhiteSecondColor};
@@ -80,7 +81,9 @@ export const Container = styled.div`
             }
 
             &.contentList {
-
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
             }
         }
     }

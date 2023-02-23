@@ -1,10 +1,24 @@
+import { selectColorsForType } from "../libs/selectColorsForType";
 import { Container } from "../styles/components/CardSearchPoke";
 import { CardSearchPokeTypes } from "../types/CardSearchPokeTypes";
 import StatesCircleVal from "./StatesCircleVal";
 
 const CardSearchPoke = ({ name, typing, valueAttk, valueDef, image }: CardSearchPokeTypes)=>{
+    function handlerModifyColor(color?:string){
+        if(color){
+            return selectColorsForType(color);
+        }
+        else if(typeof typing == "string"){
+            return selectColorsForType(typing);
+        } else if(typeof typing == "object"){
+            return selectColorsForType(typing[0]);
+        }
+
+        return "#FFFFFF";
+    }
+
     return(
-        <Container>
+        <Container colorCss={handlerModifyColor()}>
             <div className="leftArea">
                 <span className="cardName">{name}</span>
                 <div className="containerStates">
@@ -21,9 +35,14 @@ const CardSearchPoke = ({ name, typing, valueAttk, valueDef, image }: CardSearch
                     {
                         (typeof typing == "object") ? typing.map((e,k)=>{
                             return(
-                                <span key={k}>{e}</span>
+                                <span 
+                                    style={{backgroundColor: handlerModifyColor(e)}}
+                                    key={k}
+                                >
+                                    {e}
+                                </span>
                             )
-                        }) : <span>{typing}</span>
+                        }) : <span style={{backgroundColor: handlerModifyColor()}}>{typing}</span>
                     }
                 </div>
             </div>
