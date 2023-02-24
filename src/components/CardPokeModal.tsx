@@ -1,4 +1,7 @@
+import WhiteBox from "./WhiteBox";
+
 import { Container } from "../styles/components/CardPokeModal";
+import StatesCircleVal from "./StatesCircleVal";
 
 const CardPokeModal = ()=>{
     return(
@@ -20,8 +23,37 @@ const CardPokeModal = ()=>{
                         23
                     </div>
                 </div>
-                <div className="middleCard"></div>
-                <div className="bottomCard"></div>
+                <div className="middleCard">
+                    <WhiteBox arrSkills="Mimica" >
+                        <em>Abilities</em>
+                    </WhiteBox>
+                </div>
+                <div className="bottomCard">
+                    <WhiteBox>
+                        <StatesCircleVal 
+                            name="Defense"
+                            value={48}
+                        />
+                    </WhiteBox>
+                    <WhiteBox>
+                        <StatesCircleVal 
+                            name="Attack"
+                            value={150}
+                        />
+                    </WhiteBox>
+                    <WhiteBox>
+                        <StatesCircleVal 
+                            name="Sp Defense"
+                            value={90}
+                        />
+                    </WhiteBox>
+                    <WhiteBox>
+                        <StatesCircleVal 
+                            name="Sp Attack"
+                            value={150}
+                        />
+                    </WhiteBox>
+                </div>
             </div>
         </Container>
     );
