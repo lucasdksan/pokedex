@@ -15,6 +15,6 @@ export const Container = styled.div<ColorType>`
     span {
         width: ${props => `${props.widthValue}px`};
         height: 100%;
-        background-color: ${colors.ThirdColor};
+        background: ${ props => props.colorKey ? props.colorKey : colors.ThirdColor};
     }
 `;

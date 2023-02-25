@@ -2,9 +2,9 @@ import { LineStatusTypes } from "../types/LineStatusTypes";
 
 import { Container } from "../styles/components/LineStatus";
 
-const LineStatus = ({ value }:LineStatusTypes)=>{
+const LineStatus = ({ value, color }:LineStatusTypes)=>{
     return(
-        <Container widthValue={value}>
+        <Container widthValue={value} colorKey={color}>
             <span></span>
         </Container>
     );

@@ -1,18 +1,15 @@
 import { Container } from "../styles/components/WhiteBox";
 import { WhiteBoxTypes } from "../types/WhiteBoxTypes";
 
-const WhiteBox = ({ arrSkills, children }:WhiteBoxTypes)=>{
+const WhiteBox = ({ children, valuePadding, valueWidth, valueGap }:WhiteBoxTypes)=>{
     return(
-        <Container>
+        <Container
+            valuePadding={valuePadding}
+            valueWidth={valueWidth}
+            valueGap={valueGap}
+        >
             {
                 children
-            }
-            {
-                typeof arrSkills == "object" ? arrSkills.map((e,k)=>{
-                    return(
-                        <span key={k}>{e}</span>
-                    );
-                }) : <span>{arrSkills}</span>
             }
         </Container>
     );

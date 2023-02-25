@@ -1,6 +1,6 @@
 import { ModalOpenCardCss } from './../../types/ModalOpenCardTypes';
 import styled from "styled-components";
-import { colors, fonts, sizes } from "../themes";
+import { sizes } from "../themes";
 
 export const Container = styled.section<ModalOpenCardCss>`
     display: ${props => props.open ? "flex" : "none"};
@@ -19,6 +19,10 @@ export const Container = styled.section<ModalOpenCardCss>`
 
     .closeIcon {
         opacity: 1;
+        cursor: pointer;
+        position: absolute;
+        top: 30px;
+        right: 50px;
         
         img {
             opacity: 1;

@@ -6,7 +6,7 @@ import { Container } from "../styles/components/ModalOpenCard";
 import closeIcon from "../assets/search/closeIcon.svg";
 
 const ModalOpenCard = ()=>{
-    const [ open, setOpen ] = useState(true);
+    const [ open, setOpen ] = useState(false);
 
     return(
         <Container
