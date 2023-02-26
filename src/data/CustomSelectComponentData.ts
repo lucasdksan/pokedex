@@ -1,114 +1,119 @@
 const CustomSelectComponentDataType = [
     {
         value: "Normal",
-        key: "normal"
-    },
-    {
-        value: "Fire",
-        key: "fire"
-    },
-    {
-        value: "Water",
-        key: "water"
-    },
-    {
-        value: "Grass",
-        key: "grass"
-    },
-    {
-        value: "Electric",
-        key: "electric"
-    },
-    {
-        value: "Ice",
-        key: "ice"
+        key: "/type/1"
     },
     {
         value: "Fighting",
-        key: "fighting"
-    },
-    {
-        value: "Poison",
-        key: "poison"
-    },
-    {
-        value: "Ground",
-        key: "ground"
+        key: "/type/2"
     },
     {
         value: "Flying",
-        key: "flying"
+        key: "/type/3"
     },
     {
-        value: "Psychic",
-        key: "psychic"
+        value: "Poison",
+        key: "/type/4"
     },
     {
-        value: "Bug",
-        key: "bug"
+        value: "Ground",
+        key: "/type/5"
     },
     {
         value: "Rock",
-        key: "rock"
+        key: "/type/6"
+    },
+    {
+        value: "Bug",
+        key: "/type/7"
     },
     {
         value: "Ghost",
-        key: "ghost"
-    },
-    {
-        value: "Dark",
-        key: "dark"
-    },
-    {
-        value: "Dragon",
-        key: "dragon"
+        key: "/type/8"
     },
     {
         value: "Steel",
-        key: "steel"
+        key: "/type/9"
+    },
+    {
+        value: "Fire",
+        key: "/type/10"
+    },
+    {
+        value: "Water",
+        key: "/type/11"
+    },
+    {
+        value: "Grass",
+        key: "/type/12"
+    },
+    {
+        value: "Electric",
+        key: "/type/13"
+    },
+    {
+        value: "Psychic",
+        key: "/type/14"
+    },
+    {
+        value: "Ice",
+        key: "/type/15"
+    },
+    {
+        value: "Dragon",
+        key: "/type/16"
+    },
+    {
+        value: "Dark",
+        key: "/type/17"
     },
     {
         value: "Fairy",
-        key: "fairy"
-    }
-];
-
-const CustomSelectComponentDataRarity = [
-    {
-        value: "",
-        key: ""
+        key: "/type/18"
     }
 ];
 
 const CustomSelectComponentDataRegion = [
     {
         value: "Kanto",
-        key: "kanto"
+        key: "/region/1"
+    },
+    {
+        value: "Johto",
+        key: "/region/2"
     },
     {
         value: "Hoenn",
-        key: "hoenn"
+        key: "/region/3"
     },
     {
         value: "Sinnoh",
-        key: "sinnoh"
+        key: "/region/4"
     },
     {
         value: "Unova",
-        key: "unova"
+        key: "/region/5"
     },
     {
         value: "Kalos",
-        key: "kalos"
+        key: "/region/6"
     },
     {
         value: "Alola",
-        key: "alola"
+        key: "/region/7"
     },
     {
         value: "Galar",
-        key: "galar"
+        key: "/region/8"
+    },
+    {
+        value: "Hisui",
+        key: "/region/9"
+    },
+    {
+        value: "Paldea",
+        key: "/region/10"
     }
 ];
 
-export { CustomSelectComponentDataRarity, CustomSelectComponentDataType, CustomSelectComponentDataRegion };
+export { CustomSelectComponentDataType, CustomSelectComponentDataRegion };

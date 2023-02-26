@@ -37,18 +37,61 @@ export const Container = styled.div`
                 width: 100%;
                 margin-bottom: 15px;
 
-                input {
-                    background: ${colors.WhiteSecondColor};
-                    box-shadow: 4px 4px 16px rgba(1, 28, 64, 0.2);
-                    border-radius: 40px;
+                .contentInput {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                     width: 100%;
-                    height: 50px;
-                    padding: 15px 30px;
+                    height: auto;
+                    position: relative;
                     margin-bottom: 25px;
+
+                    input {
+                        background: ${colors.WhiteSecondColor};
+                        box-shadow: 4px 4px 16px rgba(1, 28, 64, 0.2);
+                        border-radius: 40px;
+                        width: 100%;
+                        height: 50px;
+                        padding: 15px 30px;
+                    }
+
+                    button {
+                        right: 20px;
+                        position: absolute;
+                        width: 100px;
+                        height: 40px;
+                        border-radius: 20px;
+                        cursor: pointer;
+                        background-color: ${colors.BtnColor};
+
+                        font-family: ${fonts.robo};
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 16px;
+                        line-height: 14px;
+                        text-align: center;
+                        color: ${colors.FullWhite};
+                    }
                 }
 
                 .lineOptions {
                     padding: 0px 30px;
+
+                    button {
+                        width: 100px;
+                        padding: 10px 30px;
+                        border-radius: 20px;
+                        cursor: pointer;
+                        background-color: ${colors.BtnColor};
+
+                        font-family: ${fonts.robo};
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 16px;
+                        line-height: 14px;
+                        text-align: center;
+                        color: ${colors.FullWhite};
+                    }
 
                     select,
                     option {

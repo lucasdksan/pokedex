@@ -1,9 +1,11 @@
 import { Container } from "../styles/components/CustomSelectComponent";
 import { CustomSelectComponentTypes } from "../types/CustomSelectComponentTypes";
 
-const CustomSelectComponent = ({ arrOptions, firstElement }:CustomSelectComponentTypes)=>{
+const CustomSelectComponent = ({ arrOptions, firstElement, onChange }:CustomSelectComponentTypes)=>{
     return(
-        <Container>
+        <Container
+            onChange={(e)=>onChange(e.target.value)}
+        >
             <option>{firstElement}</option>
             {
                 arrOptions.map((e,k)=>{

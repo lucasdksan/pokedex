@@ -1,39 +1,83 @@
+import { useEffect, useState } from "react";
+
 import CustomSelectComponent from "../components/CustomSelectComponent";
 import Header from "../components/Header";
 import { Container } from "../styles/pages/Search";
-import { 
-        CustomSelectComponentDataRarity, 
-        CustomSelectComponentDataRegion, 
-        CustomSelectComponentDataType 
-    } from "../data/CustomSelectComponentData";
 import CardSearchPoke from "../components/CardSearchPoke";
 import ModalOpenCard from "../components/ModalOpenCard";
 
+import { searchPoke } from "../services/get/searchPoke";
+import { getAllPokemons } from "../services/get/allPokemons";
+
+import {
+    CustomSelectComponentDataRegion, 
+    CustomSelectComponentDataType 
+} from "../data/CustomSelectComponentData";
+
+import { pokemonEntriesTypes } from "../types/pokemonEntriesTypes";
+
 const Search = ()=>{
+    const [ pokeSearch, setPokeSearch ] = useState("");
+    const [ searchResult, setSearchResult ] = useState();
+    const [ pokeFileterType, setPokeFileterType ] = useState("");
+    const [ pokeFileterRegion, setPokeFileterRegion ] = useState("");
+    const [ arrDataAllPokemons, setArrDataAllPokemons ] = useState<pokemonEntriesTypes[]>([]);
+
+    const handlePokeSearch = async ()=>{
+        let result = await searchPoke(pokeSearch);
+        setSearchResult(result);
+    }
+
+    const handlePokeFilter = ()=>{
+
+    }
+
+    const handleGetAllPokemons = async ()=>{
+        const allPokemons = await getAllPokemons();
+        
+        setArrDataAllPokemons(allPokemons.pokemon_entries);
+    }
+    
+    const handlePokeFilterChangeType = (key:string)=>{
+        setPokeFileterType(key);
+    }
+
+    const handlePokeFilterChangeRegion = (key:string)=>{
+        setPokeFileterRegion(key);
+    }
+
+    useEffect(()=>{
+        handleGetAllPokemons();
+    },[]);
+
     return(
         <>
             <Header />
             <Container>
                 <section>
-                    <h1>800 <strong>Pokemons</strong> for you to choose your favorite</h1>
+                    <h1>+1000 <strong>Pokemons</strong> for you to choose your favorite</h1>
                     <div className="containerSearch">
-                        <input 
-                            type="text" 
-                            placeholder="Search Pokémon..."
-                        />
+                        <div className="contentInput">
+                            <input 
+                                type="text" 
+                                placeholder="Search Pokémon..."
+                                value={pokeSearch}
+                                onChange={(e)=>setPokeSearch(e.target.value)}
+                            />
+                            <button onClick={handlePokeSearch}>Search</button>
+                        </div>
                         <div className="lineOptions">
                             <CustomSelectComponent 
                                 arrOptions={CustomSelectComponentDataType}
                                 firstElement="Type"
+                                onChange={handlePokeFilterChangeType}
                             />
-                            {/* <CustomSelectComponent 
-                                arrOptions={CustomSelectComponentDataRarity}
-                                firstElement="Rarity"
-                            /> */}
                             <CustomSelectComponent 
                                 arrOptions={CustomSelectComponentDataRegion}
                                 firstElement="Region"
+                                onChange={handlePokeFilterChangeRegion}
                             />
+                            <button onClick={handlePokeFilter}>Filter</button>
                         </div>
                     </div>
                     <div className="contentList">

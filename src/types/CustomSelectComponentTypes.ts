@@ -4,4 +4,5 @@ export type CustomSelectComponentTypes = {
         key: string,
     }[];
     firstElement: string;
+    onChange: (value: string)=>void;
 }
