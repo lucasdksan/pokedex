@@ -15,10 +15,11 @@ import {
 } from "../data/CustomSelectComponentData";
 
 import { pokemonEntriesTypes } from "../types/pokemonEntriesTypes";
+import { pokemonTypes } from "../types/pokemonTypes";
 
 const Search = ()=>{
     const [ pokeSearch, setPokeSearch ] = useState("");
-    const [ searchResult, setSearchResult ] = useState();
+    const [ searchResult, setSearchResult ] = useState<pokemonTypes>();
     const [ pokeFileterType, setPokeFileterType ] = useState("");
     const [ pokeFileterRegion, setPokeFileterRegion ] = useState("");
     const [ arrDataAllPokemons, setArrDataAllPokemons ] = useState<pokemonEntriesTypes[]>([]);
@@ -49,6 +50,10 @@ const Search = ()=>{
     useEffect(()=>{
         handleGetAllPokemons();
     },[]);
+
+    useEffect(()=>{
+        console.log(searchResult)
+    },[searchResult]);
 
     return(
         <>
