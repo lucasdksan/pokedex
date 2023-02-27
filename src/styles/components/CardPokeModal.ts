@@ -143,27 +143,33 @@ export const Container = styled.div`
                 }
             }
 
-            .containerLine {
+            .content {
                 display: flex;
-                flex-direction: column;
-                gap: 5px;
+                justify-content: space-between;
+                width: 100%;
 
-                span {
-                    font-family: ${fonts.main};
-                    font-style: normal;
-                    font-weight: 400;
-                    font-size: 16px;
-                    line-height: 19px;
-                    color: ${colors.BlackColors};
-                }
+                .containerLine {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
 
-                strong {
-                    font-family: ${fonts.main};
-                    font-style: normal;
-                    font-weight: 700;
-                    font-size: 16px;
-                    line-height: 19px;
-                    color: ${colors.BlackColors};
+                    span {
+                        font-family: ${fonts.main};
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 16px;
+                        line-height: 19px;
+                        color: ${colors.BlackColors};
+                    }
+
+                    strong {
+                        font-family: ${fonts.main};
+                        font-style: normal;
+                        font-weight: 700;
+                        font-size: 16px;
+                        line-height: 19px;
+                        color: ${colors.BlackColors};
+                    }
                 }
             }
         }

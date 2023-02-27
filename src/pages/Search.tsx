@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import CustomSelectComponent from "../components/CustomSelectComponent";
 import Header from "../components/Header";
@@ -17,12 +17,17 @@ import {
 import { pokemonEntriesTypes } from "../types/pokemonEntriesTypes";
 import { pokemonTypes } from "../types/pokemonTypes";
 
+import pokeView from "../view/pokemonView";
+import { OpenDataModalContext } from "../contexts/OpenDataModal";
+
 const Search = ()=>{
     const [ pokeSearch, setPokeSearch ] = useState("");
     const [ searchResult, setSearchResult ] = useState<pokemonTypes>();
     const [ pokeFileterType, setPokeFileterType ] = useState("");
     const [ pokeFileterRegion, setPokeFileterRegion ] = useState("");
     const [ arrDataAllPokemons, setArrDataAllPokemons ] = useState<pokemonEntriesTypes[]>([]);
+
+    const { SetOpenModal, SetPokemon } = useContext(OpenDataModalContext);
 
     const handlePokeSearch = async ()=>{
         let result = await searchPoke(pokeSearch);
@@ -48,12 +53,18 @@ const Search = ()=>{
     }
 
     useEffect(()=>{
-        handleGetAllPokemons();
-    },[]);
+        let convert;
+
+        if(searchResult != undefined) {
+            convert = pokeView.render(searchResult);
+            SetPokemon(convert);
+            SetOpenModal();
+        }
+    },[searchResult])
 
     useEffect(()=>{
-        console.log(searchResult)
-    },[searchResult]);
+        handleGetAllPokemons();
+    },[]);
 
     return(
         <>

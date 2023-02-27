@@ -1,17 +1,21 @@
-import WhiteBox from "./WhiteBox";
+import { useContext } from "react";
 
-import { Container } from "../styles/components/CardPokeModal";
+import WhiteBox from "./WhiteBox";
 import StatesCircleVal from "./StatesCircleVal";
 import LineStatus from "./LineStatus";
 
+import { Container } from "../styles/components/CardPokeModal";
+
+import { OpenDataModalContext } from "../contexts/OpenDataModal";
+
 const CardPokeModal = ()=>{
-    const arrSkills = ["Mimin", "Max"];
+    const { pokemon } = useContext(OpenDataModalContext);
 
     return(
         <Container>
             <div className="leftArea">
                 <div className="areaImgs">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png" alt="Pokémon Image" />
+                    <img src={pokemon.sprite} alt="Pokémon Image" />
                 </div>
                 <div className="areaTypes">
                     <span>Normal</span>
@@ -20,10 +24,10 @@ const CardPokeModal = ()=>{
             </div>
             <div className="rightArea">
                 <div className="topCard">
-                    <strong>Ditto</strong>
+                    <strong>{pokemon.name}</strong>
                     <span>Generation 1</span>
                     <div className="circleCode">
-                        23
+                        {pokemon.id}
                     </div>
                 </div>
                 <div className="middleCard">
@@ -35,11 +39,11 @@ const CardPokeModal = ()=>{
                         <em>Abilities: </em>
                         <div className="containerSkills">
                             {
-                                typeof arrSkills == "object" ? arrSkills.map((e,k)=>{
+                                typeof pokemon.abilities == "object" ? pokemon.abilities.map((e,k)=>{
                                     return(
                                         <span key={k} className={k > 0 ? "space" : ""}>{e}</span>
                                     );
-                                }) : <span>{arrSkills}</span>
+                                }) : <span>{pokemon.abilities}</span>
                             }
                         </div>
                     </WhiteBox>
@@ -48,13 +52,22 @@ const CardPokeModal = ()=>{
                         valueWidth="100%"
                         valueGap
                     >
-                        <div className="containerLine">
-                            <span>Healthy Points</span>
-                            <strong>140</strong>
-                            <LineStatus 
-                                value={140}
-                                color="linear-gradient(270deg, #64D368 0.15%, #64D368 70.88%)"
-                            />
+                        <div className="content">
+                            <div className="containerLine">
+                                <span>Healthy Points</span>
+                                <strong>{pokemon.stats[0].value}</strong>
+                                <LineStatus 
+                                    value={pokemon.stats[0].value}
+                                    color="linear-gradient(270deg, #64D368 0.15%, #64D368 70.88%)"
+                                />
+                            </div>
+                            <div className="containerLine">
+                                <span>Speed Points</span>
+                                <strong>{pokemon.stats[5].value}</strong>
+                                <LineStatus 
+                                    value={pokemon.stats[5].value}
+                                />
+                            </div>
                         </div>
                     </WhiteBox>
                 </div>
@@ -65,7 +78,7 @@ const CardPokeModal = ()=>{
                     >
                         <StatesCircleVal 
                             name="Defense"
-                            value={48}
+                            value={pokemon.stats[2].value}
                         />
                     </WhiteBox>
                     <WhiteBox
@@ -74,7 +87,7 @@ const CardPokeModal = ()=>{
                     >
                         <StatesCircleVal 
                             name="Attack"
-                            value={150}
+                            value={pokemon.stats[1].value}
                         />
                     </WhiteBox>
                     <WhiteBox
@@ -83,7 +96,7 @@ const CardPokeModal = ()=>{
                     >
                         <StatesCircleVal 
                             name="Sp Defense"
-                            value={90}
+                            value={pokemon.stats[4].value}
                         />
                     </WhiteBox>
                     <WhiteBox
@@ -92,7 +105,7 @@ const CardPokeModal = ()=>{
                     >
                         <StatesCircleVal 
                             name="Sp Attack"
-                            value={150}
+                            value={pokemon.stats[3].value}
                         />
                     </WhiteBox>
                 </div>
