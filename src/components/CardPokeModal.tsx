@@ -7,19 +7,38 @@ import LineStatus from "./LineStatus";
 import { Container } from "../styles/components/CardPokeModal";
 
 import { OpenDataModalContext } from "../contexts/OpenDataModal";
+import { selectColorsForType } from "../libs/selectColorsForType";
 
 const CardPokeModal = ()=>{
     const { pokemon } = useContext(OpenDataModalContext);
 
+    function handlerSelectColor(){
+        if(typeof pokemon.types == "object"){
+            return selectColorsForType(pokemon.types[0]);
+        } else {
+            return selectColorsForType(pokemon.types);
+        }
+    }
+
     return(
-        <Container>
+        <Container bg_color={handlerSelectColor()}>
             <div className="leftArea">
                 <div className="areaImgs">
                     <img src={pokemon.sprite} alt="Pokémon Image" />
                 </div>
                 <div className="areaTypes">
-                    <span>Normal</span>
-                    <span>Fire</span>
+                    {
+                        typeof pokemon.types == "object" ? pokemon.types.map((e,k)=>{
+                            return(
+                                <span 
+                                    key={k} 
+                                    className={k > 0 ? "space" : ""}
+                                >{e}</span>
+                            );
+                        }) : <span>
+                                {pokemon.types}
+                            </span>
+                    }
                 </div>
             </div>
             <div className="rightArea">

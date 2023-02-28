@@ -13,7 +13,7 @@ export default {
             
             let type;
 
-            if(value.types.length >= 1){
+            if(value.types.length == 1){
                 type = value.types[0].type.name;
                 return type;
             } else {

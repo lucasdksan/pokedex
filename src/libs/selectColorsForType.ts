@@ -1,42 +1,46 @@
 import { colors } from "../styles/themes";
 
 export const selectColorsForType = (type: string)=>{
-    switch(type){
-        case "Ice":
+    const typeConvert = type.toLowerCase();
+
+    switch(typeConvert){
+        case "ice":
             return colors.IceWater;
-        case "Water":
+        case "water":
             return colors.IceWater;
-        case "Eletric":
+        case "eletric":
             return colors.Eletric;
-        case "Ground":
+        case "electric":
+            return colors.Eletric;
+        case "ground":
             return colors.Ground;
-        case "Posion":
+        case "posion":
             return colors.PosionPsychicFairyGhost;
-        case "Psychic":
+        case "psychic":
             return colors.PosionPsychicFairyGhost;
-        case "Fairy":
+        case "fairy":
             return colors.PosionPsychicFairyGhost;
-        case "Ghost":
+        case "ghost":
             return colors.PosionPsychicFairyGhost;
-        case "Normal":
+        case "normal":
             return colors.NormalFlying;
-        case "Flying":
+        case "flying":
             return colors.NormalFlying;
-        case "Fire":  
+        case "fire":  
             return colors.FireFightingDragon;
-        case "Fighting":  
+        case "fighting":  
             return colors.FireFightingDragon;
-        case "Dragon":
+        case "dragon":
             return colors.FireFightingDragon;
-        case "Grass":
+        case "grass":
             return colors.GrassBug;
-        case "Bug":
+        case "bug":
             return colors.GrassBug;
-        case "Stile":
+        case "stile":
             return colors.StileDarkRock;
-        case "Dark":
+        case "dark":
             return colors.StileDarkRock;
-        case "Rock":
+        case "rock":
             return colors.StileDarkRock;
         default:
             return colors.FullWhite;

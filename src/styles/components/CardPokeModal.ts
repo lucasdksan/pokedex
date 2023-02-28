@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { CardPokeModalTypesCss } from "../../types/CardPokeModalTypes";
 import { colors, fonts } from "../themes";
 
-export const Container = styled.div`
+export const Container = styled.div<CardPokeModalTypesCss>`
     overflow: hidden;
     display: flex;
     flex-direction: row;
@@ -11,7 +12,7 @@ export const Container = styled.div`
     width: 100%;
     max-width: 800px;
     height: 380px;
-    background-color: red;
+    background-color: ${props => props.bg_color};
 
     .leftArea {
         display: flex;

@@ -21,7 +21,7 @@ const ModalOpenCard = ()=>{
             >
                 <img src={closeIcon} alt="Close icon"/>
             </span>
-            <CardPokeModal />
+            <CardPokeModal /> 
         </Container>
     );
 }
