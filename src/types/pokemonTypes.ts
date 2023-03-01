@@ -50,4 +50,5 @@ export type pokemonTypes = {
     };
     stats: stat[];
     types: typing[];
+    generation: string;
 }

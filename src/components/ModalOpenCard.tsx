@@ -7,21 +7,32 @@ import CardPokeModal from "./CardPokeModal";
 import { Container } from "../styles/components/ModalOpenCard";
 
 import closeIcon from "../assets/search/closeIcon.svg";
+import CardPokeModalError from "./CardPokeModalError";
 
 const ModalOpenCard = ()=>{
-    const { openModal, SetOpenModal } = useContext(OpenDataModalContext);
+    const { openModal, SetOpenModal, openModalError, SetOpenModalError } = useContext(OpenDataModalContext);
+
+    function handleCloseModal(){
+        if(openModal){
+            SetOpenModal();
+        }
+        if(openModalError){
+            SetOpenModalError();
+        }
+    }
 
     return(
         <Container
-            open={openModal}
+            open={openModal || openModalError}
         >
             <span 
                 className="closeIcon"
-                onClick={SetOpenModal}
+                onClick={handleCloseModal}
             >
                 <img src={closeIcon} alt="Close icon"/>
             </span>
-            <CardPokeModal /> 
+            { openModal && <CardPokeModal /> }
+            { openModalError && <CardPokeModalError /> }
         </Container>
     );
 }

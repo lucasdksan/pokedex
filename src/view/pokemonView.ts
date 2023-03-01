@@ -54,7 +54,8 @@ export default {
             name: value.name,
             sprite: selectValueSprite(),
             types: selectValueType(),
-            stats: selectValueStats()
+            stats: selectValueStats(),
+            generation: value.generation
         }
     },
 

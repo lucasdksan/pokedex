@@ -12,7 +12,7 @@ export const Container = styled.div<CardPokeModalTypesCss>`
     width: 100%;
     max-width: 800px;
     height: 380px;
-    background-color: ${props => props.bg_color};
+    background: ${props => props.bg_color};
 
     .leftArea {
         display: flex;
@@ -67,7 +67,7 @@ export const Container = styled.div<CardPokeModalTypesCss>`
         width: 60%;
         height: 100%;
         padding: 30px 20px;
-        background: linear-gradient(180deg, #732119AF 42.19%, transparent 100%);
+        background: linear-gradient(180deg, ${props=>props.bg_color_shadow}, 42.19%, transparent 100%);
 
         .topCard {
             display: flex;

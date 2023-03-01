@@ -8,6 +8,8 @@ export type OpenDataModalProviderTypes = {
 export type OpenDataModalContextTypes = {
     pokemon: pokemonViewTypes;
     openModal: boolean;
+    openModalError: boolean;
     SetOpenModal: ()=>void;
     SetPokemon: (poke: pokemonViewTypes)=>void;
+    SetOpenModalError: ()=>void;
 }

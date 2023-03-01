@@ -8,4 +8,5 @@ export type pokemonViewTypes = {
         name: string;
         value: number;
     }[];
+    generation: string;
 }

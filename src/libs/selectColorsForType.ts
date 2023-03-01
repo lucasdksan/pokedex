@@ -14,7 +14,7 @@ export const selectColorsForType = (type: string)=>{
             return colors.Eletric;
         case "ground":
             return colors.Ground;
-        case "posion":
+        case "poison":
             return colors.PosionPsychicFairyGhost;
         case "psychic":
             return colors.PosionPsychicFairyGhost;
@@ -27,16 +27,18 @@ export const selectColorsForType = (type: string)=>{
         case "flying":
             return colors.NormalFlying;
         case "fire":  
-            return colors.FireFightingDragon;
+            return colors.FireFighting;
         case "fighting":  
-            return colors.FireFightingDragon;
+            return colors.FireFighting;
         case "dragon":
-            return colors.FireFightingDragon;
+            return colors.Dragon;
         case "grass":
             return colors.GrassBug;
         case "bug":
             return colors.GrassBug;
         case "stile":
+            return colors.StileDarkRock;
+        case "steel":
             return colors.StileDarkRock;
         case "dark":
             return colors.StileDarkRock;

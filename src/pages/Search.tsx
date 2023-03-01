@@ -27,11 +27,16 @@ const Search = ()=>{
     const [ pokeFileterRegion, setPokeFileterRegion ] = useState("");
     const [ arrDataAllPokemons, setArrDataAllPokemons ] = useState<pokemonEntriesTypes[]>([]);
 
-    const { SetOpenModal, SetPokemon } = useContext(OpenDataModalContext);
+    const { SetOpenModal, SetPokemon, SetOpenModalError } = useContext(OpenDataModalContext);
 
     const handlePokeSearch = async ()=>{
-        let result = await searchPoke(pokeSearch);
-        setSearchResult(result);
+        let { result, stats } = await searchPoke(pokeSearch);
+
+        if(stats){
+            setSearchResult(result);
+        } else {
+            SetOpenModalError();
+        }
     }
 
     const handlePokeFilter = ()=>{
@@ -78,7 +83,7 @@ const Search = ()=>{
                                 type="text" 
                                 placeholder="Search Pokémon..."
                                 value={pokeSearch}
-                                onChange={(e)=>setPokeSearch(e.target.value)}
+                                onChange={(e)=>setPokeSearch(e.target.value.toLowerCase())}
                             />
                             <button onClick={handlePokeSearch}>Search</button>
                         </div>

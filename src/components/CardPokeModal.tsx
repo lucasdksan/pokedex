@@ -8,20 +8,39 @@ import { Container } from "../styles/components/CardPokeModal";
 
 import { OpenDataModalContext } from "../contexts/OpenDataModal";
 import { selectColorsForType } from "../libs/selectColorsForType";
+import { selectColorsForTypeShadow } from "../libs/selectColorsForTypeShadow";
 
 const CardPokeModal = ()=>{
     const { pokemon } = useContext(OpenDataModalContext);
 
-    function handlerSelectColor(){
-        if(typeof pokemon.types == "object"){
-            return selectColorsForType(pokemon.types[0]);
+    function handlerSelectColor(shadow: boolean){
+        if(shadow){
+            if(typeof pokemon.types == "object"){
+                return selectColorsForTypeShadow(pokemon.types[0]);
+            } else {
+                return selectColorsForTypeShadow(pokemon.types);
+            }
         } else {
-            return selectColorsForType(pokemon.types);
+            if(typeof pokemon.types == "object"){
+                return selectColorsForType(pokemon.types[0]);
+            } else {
+                return selectColorsForType(pokemon.types);
+            }
         }
+        
+    }
+
+    function handlePokeGeneration(){
+        const [ gen, cod ] = pokemon.generation.split("-");
+
+        return cod.toUpperCase();
     }
 
     return(
-        <Container bg_color={handlerSelectColor()}>
+        <Container 
+            bg_color={handlerSelectColor(false)}
+            bg_color_shadow={handlerSelectColor(true)}
+        >
             <div className="leftArea">
                 <div className="areaImgs">
                     <img src={pokemon.sprite} alt="Pokémon Image" />
@@ -44,7 +63,7 @@ const CardPokeModal = ()=>{
             <div className="rightArea">
                 <div className="topCard">
                     <strong>{pokemon.name}</strong>
-                    <span>Generation 1</span>
+                    <span>Generation {handlePokeGeneration()}</span>
                     <div className="circleCode">
                         {pokemon.id}
                     </div>
@@ -67,7 +86,7 @@ const CardPokeModal = ()=>{
                         </div>
                     </WhiteBox>
                     <WhiteBox
-                        valuePadding="10px 30px"
+                        valuePadding="10px 15px"
                         valueWidth="100%"
                         valueGap
                     >

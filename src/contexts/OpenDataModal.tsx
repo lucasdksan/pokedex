@@ -36,11 +36,13 @@ export const OpenDataModalProvider = ({ children }:OpenDataModalProviderTypes)=>
                 name: "speed",
                 value: 65
             }
-        ]
+        ],
+        generation: "generation-i"
     }
 
     const [ pokemon, setPokemon ] = useState<pokemonViewTypes>(initialPokemon);
     const [ openModal, setOpenModal ] = useState(false);
+    const [ openModalError, setOpenModalError ] = useState(false);
 
     function SetPokemon(poke: pokemonViewTypes){
         setPokemon(poke);
@@ -50,13 +52,19 @@ export const OpenDataModalProvider = ({ children }:OpenDataModalProviderTypes)=>
         setOpenModal(!openModal);
     }
 
+    function SetOpenModalError(){
+        setOpenModalError(!openModalError);
+    }
+
     return(
         <OpenDataModalContext.Provider
             value={{
                 pokemon,
                 SetPokemon,
                 openModal,
-                SetOpenModal
+                SetOpenModal,
+                openModalError,
+                SetOpenModalError
             }}
         >
             {

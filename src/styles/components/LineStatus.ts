@@ -3,7 +3,7 @@ import { ColorType } from "../../types/LineStatusTypes";
 import { colors } from "../themes";
 
 export const Container = styled.div<ColorType>`
-    width: 150px;
+    width: 200px;
     height: 8px;
     border-radius: 8px;
     background-color: ${colors.WhiteColor};

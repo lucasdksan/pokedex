@@ -35,9 +35,19 @@ export const colors = {
     StileDarkRock: "#A1A1A1",
     GrassBug: "#70A83B",
     IceWater: "#A2CFF0",
-    FireFightingDragon: "#F76545",
+    FireFighting: "#F76545",
+    Dragon: "#7038F8",
     NormalFlying: "#76AADB",
     PosionPsychicFairyGhost: "#A974BC",
     Ground: "#9B897B",
-    Eletric: "#F7C545"
+    Eletric: "#F7C545",
+    StileDarkRockShadow: "#0B4352AF",
+    GrassBugShadow: "#213F05AF",
+    IceWaterShadow: "#061827AF",
+    FireFightingShadow: "#732119AF",
+    DragonShadow: "#16043FAF",
+    NormalFlyingShadow: "#072037AF",
+    PosionPsychicFairyGhostShadow: "#1A0322AF",
+    GroundShadow: "#351A06AF",
+    EletricShadow: "#61480AAF"
 };
