@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import { OpenDataModalProviderTypes, OpenDataModalContextTypes  } from "../types/OpenDataModalProviderTypes";
+import { pokemonAllSearch } from "../types/pokemonAllSearch";
 import { pokemonViewTypes } from "../types/pokemonViewTypes";
 
 export const OpenDataModalContext = createContext({} as OpenDataModalContextTypes);
@@ -41,11 +42,17 @@ export const OpenDataModalProvider = ({ children }:OpenDataModalProviderTypes)=>
     }
 
     const [ pokemon, setPokemon ] = useState<pokemonViewTypes>(initialPokemon);
+    const [ allPokemon, setAllPokemon ] = useState<pokemonAllSearch[]>([]);
     const [ openModal, setOpenModal ] = useState(false);
     const [ openModalError, setOpenModalError ] = useState(false);
 
     function SetPokemon(poke: pokemonViewTypes){
         setPokemon(poke);
+    }
+
+    function SetAllPokemons(all: pokemonAllSearch[]){
+        console.log("Context: ", all)
+        setAllPokemon(all);
     }
 
     function SetOpenModal(){
@@ -60,11 +67,13 @@ export const OpenDataModalProvider = ({ children }:OpenDataModalProviderTypes)=>
         <OpenDataModalContext.Provider
             value={{
                 pokemon,
-                SetPokemon,
                 openModal,
-                SetOpenModal,
                 openModalError,
-                SetOpenModalError
+                allPokemon,
+                SetOpenModalError,
+                SetOpenModal,
+                SetPokemon,
+                SetAllPokemons
             }}
         >
             {

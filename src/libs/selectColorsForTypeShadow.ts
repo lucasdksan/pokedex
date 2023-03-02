@@ -15,13 +15,13 @@ export const selectColorsForTypeShadow = (type: string)=>{
         case "ground":
             return colors.GroundShadow;
         case "poison":
-            return colors.PosionPsychicFairyGhostShadow;
+            return colors.PosionPsychicShadow;
         case "psychic":
-            return colors.PosionPsychicFairyGhostShadow;
+            return colors.PosionPsychicShadow;
         case "fairy":
-            return colors.PosionPsychicFairyGhostShadow;
+            return colors.FairyShadow;
         case "ghost":
-            return colors.PosionPsychicFairyGhostShadow;
+            return colors.GhostShadow;
         case "normal":
             return colors.NormalFlyingShadow;
         case "flying":

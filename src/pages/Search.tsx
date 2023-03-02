@@ -18,7 +18,11 @@ import { pokemonEntriesTypes } from "../types/pokemonEntriesTypes";
 import { pokemonTypes } from "../types/pokemonTypes";
 
 import pokeView from "../view/pokemonView";
+import allPokeView from "../view/pokemonAllView";
+
 import { OpenDataModalContext } from "../contexts/OpenDataModal";
+
+import { searchDataPoke } from "../services/get/searchDataPoke";
 
 const Search = ()=>{
     const [ pokeSearch, setPokeSearch ] = useState("");
@@ -27,7 +31,7 @@ const Search = ()=>{
     const [ pokeFileterRegion, setPokeFileterRegion ] = useState("");
     const [ arrDataAllPokemons, setArrDataAllPokemons ] = useState<pokemonEntriesTypes[]>([]);
 
-    const { SetOpenModal, SetPokemon, SetOpenModalError } = useContext(OpenDataModalContext);
+    const { SetOpenModal, SetPokemon, SetOpenModalError, SetAllPokemons, allPokemon } = useContext(OpenDataModalContext);
 
     const handlePokeSearch = async ()=>{
         let { result, stats } = await searchPoke(pokeSearch);
@@ -57,6 +61,19 @@ const Search = ()=>{
         setPokeFileterRegion(key);
     }
 
+    const handlerPokeAll = async ()=>{
+        const arrAllObjs = [];
+
+        if(arrDataAllPokemons.length > 0){
+            for(let i in arrDataAllPokemons){
+                let obj = await searchDataPoke(arrDataAllPokemons[i]);
+                arrAllObjs.push(obj);
+            }
+        }
+
+        SetAllPokemons(arrAllObjs);
+    }
+
     useEffect(()=>{
         let convert;
 
@@ -65,11 +82,18 @@ const Search = ()=>{
             SetPokemon(convert);
             SetOpenModal();
         }
+
+        console.log("Oi: ", allPokeView.render(allPokemon[0]));
+
     },[searchResult])
 
     useEffect(()=>{
         handleGetAllPokemons();
     },[]);
+
+    useEffect(()=>{
+        handlerPokeAll();
+    },[arrDataAllPokemons]);
 
     return(
         <>
@@ -102,69 +126,21 @@ const Search = ()=>{
                         </div>
                     </div>
                     <div className="contentList">
-                        <CardSearchPoke 
-                            image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
-                            name="Ditto"
-                            typing={["Normal", "Grass"]}
-                            valueAttk={150}
-                            valueDef={48}
-                        />
-                        <CardSearchPoke 
-                            image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
-                            name="Ditto"
-                            typing="Normal"
-                            valueAttk={48}
-                            valueDef={48}
-                        />
-                        <CardSearchPoke 
-                            image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
-                            name="Ditto"
-                            typing={["Fire", "Grass"]}
-                            valueAttk={150}
-                            valueDef={48}
-                        />
-                        <CardSearchPoke 
-                            image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
-                            name="Ditto"
-                            typing={["Ice", "Grass"]}
-                            valueAttk={150}
-                            valueDef={48}
-                        />
-                        <CardSearchPoke 
-                            image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
-                            name="Ditto"
-                            typing={["Ghost", "Grass"]}
-                            valueAttk={150}
-                            valueDef={48}
-                        />
-                        <CardSearchPoke 
-                            image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
-                            name="Ditto"
-                            typing={["Rock", "Grass"]}
-                            valueAttk={150}
-                            valueDef={48}
-                        />
-                        <CardSearchPoke 
-                            image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
-                            name="Ditto"
-                            typing={["Fairy", "Grass"]}
-                            valueAttk={150}
-                            valueDef={48}
-                        />
-                        <CardSearchPoke 
-                            image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
-                            name="Ditto"
-                            typing={["Water", "Grass"]}
-                            valueAttk={150}
-                            valueDef={48}
-                        />
-                        <CardSearchPoke 
-                            image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
-                            name="Ditto"
-                            typing={["Water", "Grass"]}
-                            valueAttk={150}
-                            valueDef={48}
-                        />
+                        {
+                            allPokemon.length > 0 &&
+                            allPokemon.map((e, k)=>{
+                                return(
+                                    <CardSearchPoke 
+                                        key={k}
+                                        image={e.sprites.other.home.front_default as string}
+                                        name={e.name}
+                                        typing={e.types.length > 0 ? e.types[0].type.name : ""}
+                                        valueAttk={e.stats[0].base_stat}
+                                        valueDef={e.stats[2].base_stat}
+                                    />
+                                );
+                            })
+                        }
                     </div>
                 </section>
             </Container>

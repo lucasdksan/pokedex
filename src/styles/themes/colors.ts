@@ -38,7 +38,9 @@ export const colors = {
     FireFighting: "#F76545",
     Dragon: "#7038F8",
     NormalFlying: "#76AADB",
-    PosionPsychicFairyGhost: "#A974BC",
+    PosionPsychic: "#A974BC",
+    Ghost: "#7B62A3",
+    Fairy: "#fDB9E9",
     Ground: "#9B897B",
     Eletric: "#F7C545",
     StileDarkRockShadow: "#0B4352AF",
@@ -47,7 +49,9 @@ export const colors = {
     FireFightingShadow: "#732119AF",
     DragonShadow: "#16043FAF",
     NormalFlyingShadow: "#072037AF",
-    PosionPsychicFairyGhostShadow: "#1A0322AF",
+    PosionPsychicShadow: "#1A0322AF",
+    GhostShadow: "#13042CAF",
+    FairyShadow: "#41032EAF",
     GroundShadow: "#351A06AF",
     EletricShadow: "#61480AAF"
 };

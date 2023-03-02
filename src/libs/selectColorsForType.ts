@@ -15,13 +15,13 @@ export const selectColorsForType = (type: string)=>{
         case "ground":
             return colors.Ground;
         case "poison":
-            return colors.PosionPsychicFairyGhost;
+            return colors.PosionPsychic;
         case "psychic":
-            return colors.PosionPsychicFairyGhost;
+            return colors.PosionPsychic;
         case "fairy":
-            return colors.PosionPsychicFairyGhost;
+            return colors.Fairy;
         case "ghost":
-            return colors.PosionPsychicFairyGhost;
+            return colors.Ghost;
         case "normal":
             return colors.NormalFlying;
         case "flying":

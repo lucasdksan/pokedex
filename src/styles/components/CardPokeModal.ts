@@ -25,7 +25,12 @@ export const Container = styled.div<CardPokeModalTypesCss>`
         box-shadow: 4px 4px 8px rgba(1, 28, 64, 0.2);
 
         .areaImgs {
-            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+
             img {
                 width: 100%;
                 height: auto;

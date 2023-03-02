@@ -44,7 +44,7 @@ export default {
             if(value.sprites.other.home.front_default != null){
                 return value.sprites.other.home.front_default;
             } else {
-                return "";
+                return Object.values(value.sprites.other)[2].front_default;
             }
         }
 

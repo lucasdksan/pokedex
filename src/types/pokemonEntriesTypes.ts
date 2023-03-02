@@ -5,5 +5,5 @@ type pokemonUrlType = {
 
 export type pokemonEntriesTypes = {
     entryNumber: number;
-    pokemonSpecies: pokemonUrlType;
+    pokemon_species: pokemonUrlType;
 }
