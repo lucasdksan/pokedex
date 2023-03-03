@@ -37,13 +37,13 @@ export const selectColorsForTypeShadow = (type: string)=>{
         case "bug":
             return colors.GrassBugShadow;
         case "stile":
-            return colors.StileDarkRockShadow;
+            return colors.StileRockShadow;
         case "steel":
-            return colors.StileDarkRockShadow;
+            return colors.StileRockShadow;
         case "dark":
-            return colors.StileDarkRockShadow;
+            return colors.DarkShadow;
         case "rock":
-            return colors.StileDarkRockShadow;
+            return colors.StileRockShadow;
         default:
             return colors.FullWhite;
         break;

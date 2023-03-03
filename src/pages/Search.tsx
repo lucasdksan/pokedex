@@ -18,7 +18,6 @@ import { pokemonEntriesTypes } from "../types/pokemonEntriesTypes";
 import { pokemonTypes } from "../types/pokemonTypes";
 
 import pokeView from "../view/pokemonView";
-import allPokeView from "../view/pokemonAllView";
 
 import { OpenDataModalContext } from "../contexts/OpenDataModal";
 
@@ -49,6 +48,8 @@ const Search = ()=>{
 
     const handleGetAllPokemons = async ()=>{
         const allPokemons = await getAllPokemons();
+
+        console.log(allPokemons)
         
         setArrDataAllPokemons(allPokemons.pokemon_entries);
     }
@@ -82,8 +83,6 @@ const Search = ()=>{
             SetPokemon(convert);
             SetOpenModal();
         }
-
-        console.log("Oi: ", allPokeView.render(allPokemon[0]));
 
     },[searchResult])
 
@@ -129,14 +128,22 @@ const Search = ()=>{
                         {
                             allPokemon.length > 0 &&
                             allPokemon.map((e, k)=>{
+                                let arrTypes: string[] = [];
+                                let url = e.sprites.other.home.front_default !== "" ? e.sprites.other.home.front_default as string : Object.values(e.sprites.other)[2].front_default as string;
+
+                                e.types.forEach((es)=>{
+                                    arrTypes.push(es.type.name);
+                                });
+
                                 return(
                                     <CardSearchPoke 
                                         key={k}
-                                        image={e.sprites.other.home.front_default as string}
+                                        image={url}
                                         name={e.name}
-                                        typing={e.types.length > 0 ? e.types[0].type.name : ""}
+                                        typing={arrTypes}
                                         valueAttk={e.stats[0].base_stat}
                                         valueDef={e.stats[2].base_stat}
+                                        arrKey={k}
                                     />
                                 );
                             })

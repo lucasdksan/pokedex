@@ -4,6 +4,7 @@ export type CardSearchPokeTypes = {
     valueDef: number;
     typing: string[] | string;
     image: string;
+    arrKey: number;
 }
 
 export type CardSearchPokeTypesCss = {

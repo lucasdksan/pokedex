@@ -51,7 +51,6 @@ export const OpenDataModalProvider = ({ children }:OpenDataModalProviderTypes)=>
     }
 
     function SetAllPokemons(all: pokemonAllSearch[]){
-        console.log("Context: ", all)
         setAllPokemon(all);
     }
 

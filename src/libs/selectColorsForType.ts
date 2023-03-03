@@ -37,13 +37,13 @@ export const selectColorsForType = (type: string)=>{
         case "bug":
             return colors.GrassBug;
         case "stile":
-            return colors.StileDarkRock;
+            return colors.StileRock;
         case "steel":
-            return colors.StileDarkRock;
+            return colors.StileRock;
         case "dark":
-            return colors.StileDarkRock;
+            return colors.Dark;
         case "rock":
-            return colors.StileDarkRock;
+            return colors.StileRock;
         default:
             return colors.FullWhite;
         break;
