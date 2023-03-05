@@ -22,6 +22,7 @@ import pokeView from "../view/pokemonView";
 import { OpenDataModalContext } from "../contexts/OpenDataModal";
 
 import { searchDataPoke } from "../services/get/searchDataPoke";
+import Loading from "../components/Loading";
 
 const Search = ()=>{
     const [ pokeSearch, setPokeSearch ] = useState("");
@@ -124,7 +125,11 @@ const Search = ()=>{
                             <button onClick={handlePokeFilter}>Filter</button>
                         </div>
                     </div>
-                    <div className="contentList">
+                    <div className="contentList" style={{ display: allPokemon.length > 0 ? "grid" : "flex" }}>
+                        {
+                            allPokemon.length == 0 &&
+                            <Loading />
+                        }
                         {
                             allPokemon.length > 0 &&
                             allPokemon.map((e, k)=>{
