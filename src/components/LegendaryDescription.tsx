@@ -1,13 +1,20 @@
+import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
 import { Container } from "../styles/components/LegendaryDescription";
+
 import LegendaryCard from "./LegendaryCard";
 import { CustomArrowLeft, CustomArrowRight } from "./CustomArrows";
 import ContentStatusElement from "./ContentStatusElement";
 
-const LegendaryDescription = () => {
+import { LegendaryDescriptionTypes } from "../types/LegendaryDescriptionTypes";
+
+import pokemonAllView from "../view/pokemonAllView";
+import { pokemonAllViewTypes } from "../types/pokemonAllViewTypes";
+
+const LegendaryDescription = ({ legendaryPokes }:LegendaryDescriptionTypes) => {
     const settings = {
         dots: false,
         infinite: true,
@@ -58,42 +65,21 @@ const LegendaryDescription = () => {
             </div>
             <div className="bottomContent">
                 <Slider {...settings}>
-                    <LegendaryCard
-                        name="Ditto"
-                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
-                    />
-                    <LegendaryCard
-                        name="Ditto"
-                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
-                    />
-                    <LegendaryCard
-                        name="Ditto"
-                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
-                    />
-                    <LegendaryCard
-                        name="Ditto"
-                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
-                    />
-                    <LegendaryCard
-                        name="Ditto"
-                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
-                    />
-                    <LegendaryCard
-                        name="Ditto"
-                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
-                    />
-                    <LegendaryCard
-                        name="Ditto"
-                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
-                    />
-                    <LegendaryCard
-                        name="Ditto"
-                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
-                    />
-                    <LegendaryCard
-                        name="Ditto"
-                        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png"
-                    />
+                    {
+                        legendaryPokes?.map((e,k)=>{
+                            let url = e.sprites.other.home.front_default !== null ? e.sprites.other.home.front_default as string : Object.values(e.sprites.other)[2].front_default as string;
+
+                            return(
+                                <LegendaryCard
+                                    key={k}
+                                    name={e.name}
+                                    src={url}
+                                    click={()=>{
+                                    }}
+                                />
+                            );
+                        })
+                    }
                 </Slider>
             </div>
         </Container>

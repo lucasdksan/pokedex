@@ -1,10 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 
+import { Container } from "../styles/pages/Search";
+
 import CustomSelectComponent from "../components/CustomSelectComponent";
 import Header from "../components/Header";
-import { Container } from "../styles/pages/Search";
 import CardSearchPoke from "../components/CardSearchPoke";
 import ModalOpenCard from "../components/ModalOpenCard";
+import Loading from "../components/Loading";
 
 import { searchPoke } from "../services/get/searchPoke";
 import { getAllPokemons } from "../services/get/allPokemons";
@@ -22,7 +24,6 @@ import pokeView from "../view/pokemonView";
 import { OpenDataModalContext } from "../contexts/OpenDataModal";
 
 import { searchDataPoke } from "../services/get/searchDataPoke";
-import Loading from "../components/Loading";
 
 const Search = ()=>{
     const [ pokeSearch, setPokeSearch ] = useState("");
@@ -49,8 +50,6 @@ const Search = ()=>{
 
     const handleGetAllPokemons = async ()=>{
         const allPokemons = await getAllPokemons();
-
-        console.log(allPokemons)
         
         setArrDataAllPokemons(allPokemons.pokemon_entries);
     }
@@ -92,7 +91,9 @@ const Search = ()=>{
     },[]);
 
     useEffect(()=>{
-        handlerPokeAll();
+        if(allPokemon.length === 0){
+            handlerPokeAll();
+        }
     },[arrDataAllPokemons]);
 
     return(
@@ -134,7 +135,7 @@ const Search = ()=>{
                             allPokemon.length > 0 &&
                             allPokemon.map((e, k)=>{
                                 let arrTypes: string[] = [];
-                                let url = e.sprites.other.home.front_default !== "" ? e.sprites.other.home.front_default as string : Object.values(e.sprites.other)[2].front_default as string;
+                                let url = e.sprites.other.home.front_default !== null ? e.sprites.other.home.front_default as string : Object.values(e.sprites.other)[2].front_default as string;
 
                                 e.types.forEach((es)=>{
                                     arrTypes.push(es.type.name);

@@ -4,8 +4,6 @@ import { CardSearchPokeTypes } from "../types/CardSearchPokeTypes";
 import StatesCircleVal from "./StatesCircleVal";
 
 const CardSearchPoke = ({ name, typing, valueAttk, valueDef, image, arrKey }: CardSearchPokeTypes)=>{
-    console.log(`${name}: `, typing)
-
     function handlerModifyColor(color?:string){
         if(color){
             return selectColorsForType(color);

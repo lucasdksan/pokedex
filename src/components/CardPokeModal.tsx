@@ -13,6 +13,8 @@ import { selectColorsForTypeShadow } from "../libs/selectColorsForTypeShadow";
 const CardPokeModal = ()=>{
     const { pokemon } = useContext(OpenDataModalContext);
 
+    console.log(pokemon)
+
     function handlerSelectColor(shadow: boolean){
         if(shadow){
             if(typeof pokemon.types == "object"){
@@ -43,7 +45,7 @@ const CardPokeModal = ()=>{
         >
             <div className="leftArea">
                 <div className="areaImgs">
-                    <img src={pokemon.sprite} alt="Pokémon Image" />
+                    <img src={pokemon.sprite as string} alt="Pokémon Image" />
                 </div>
                 <div className="areaTypes">
                     {

@@ -21,8 +21,7 @@ const Loading = ()=>{
                 style={{
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                    margin: '0px 0px 10px 10px',
+                    justifyContent: 'center'
                 }}
             />
         </Container>

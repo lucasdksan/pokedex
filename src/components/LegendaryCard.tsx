@@ -3,9 +3,11 @@ import { LegendaryCardTypes } from "../types/LegendaryCardTypes";
 
 import pokeBall from "../assets/legendary/pokeball.svg";
 
-const LegendaryCard = ({ name, src }:LegendaryCardTypes)=>{
+const LegendaryCard = ({ name, src, click }:LegendaryCardTypes)=>{
     return(
-        <Container>
+        <Container
+            onClick={click}
+        >
             <img className="pokeMainImage" src={src} alt="Pokémon Image" />
             <div className="nameArea">
                 <span>{name}</span>
