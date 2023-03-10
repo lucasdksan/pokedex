@@ -3,11 +3,11 @@ import { useContext } from "react";
 import { OpenDataModalContext } from "../contexts/OpenDataModal";
 
 import CardPokeModal from "./CardPokeModal";
+import CardPokeModalError from "./CardPokeModalError";
 
 import { Container } from "../styles/components/ModalOpenCard";
 
 import closeIcon from "../assets/search/closeIcon.svg";
-import CardPokeModalError from "./CardPokeModalError";
 
 const ModalOpenCard = ()=>{
     const { openModal, SetOpenModal, openModalError, SetOpenModalError } = useContext(OpenDataModalContext);

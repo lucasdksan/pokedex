@@ -1,4 +1,5 @@
 import { Container } from "../styles/components/StatesCircleVal";
+
 import { StatesCircleValTypes } from "../types/StatesCircleValTypes";
 
 const StatesCircleVal = ({ name, value }:StatesCircleValTypes)=>{

@@ -1,4 +1,5 @@
 import { Container } from "../styles/components/CustomSelectComponent";
+
 import { CustomSelectComponentTypes } from "../types/CustomSelectComponentTypes";
 
 const CustomSelectComponent = ({ arrOptions, firstElement, onChange }:CustomSelectComponentTypes)=>{

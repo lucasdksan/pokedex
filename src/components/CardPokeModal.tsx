@@ -7,6 +7,7 @@ import LineStatus from "./LineStatus";
 import { Container } from "../styles/components/CardPokeModal";
 
 import { OpenDataModalContext } from "../contexts/OpenDataModal";
+
 import { selectColorsForType } from "../libs/selectColorsForType";
 import { selectColorsForTypeShadow } from "../libs/selectColorsForTypeShadow";
 

@@ -43,8 +43,10 @@ export default {
         function selectValueSprite(){
             if(unity.sprites.other.home.front_default != null){
                 return unity.sprites.other.home.front_default;
+            } else if( Object.values(unity.sprites.other)[2].front_default != null ) {
+                return Object.values(unity.sprites.other)[2].front_default as string;
             } else {
-                return Object.values(unity.sprites.other)[2].front_default;
+                return "";
             }
         }
 

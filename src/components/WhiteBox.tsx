@@ -1,4 +1,5 @@
 import { Container } from "../styles/components/WhiteBox";
+
 import { WhiteBoxTypes } from "../types/WhiteBoxTypes";
 
 const WhiteBox = ({ children, valuePadding, valueWidth, valueGap }:WhiteBoxTypes)=>{

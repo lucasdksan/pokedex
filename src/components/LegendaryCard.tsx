@@ -1,4 +1,5 @@
 import { Container } from "../styles/components/LegendaryCard";
+
 import { LegendaryCardTypes } from "../types/LegendaryCardTypes";
 
 import pokeBall from "../assets/legendary/pokeball.svg";

@@ -1,8 +1,9 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
 import { Container, ContentOptions, Elements, LeftArea, Nav, RightArea, ContentBody } from "../styles/components/Header";
 
 import Logo from "../assets/header/Logo.svg";
-import { useEffect, useState } from "react";
 
 const Header = () => {
     const [ keys, setKeys ] = useState({

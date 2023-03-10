@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -10,11 +10,56 @@ import { CustomArrowLeft, CustomArrowRight } from "./CustomArrows";
 import ContentStatusElement from "./ContentStatusElement";
 
 import { LegendaryDescriptionTypes } from "../types/LegendaryDescriptionTypes";
-
-import pokemonAllView from "../view/pokemonAllView";
 import { pokemonAllViewTypes } from "../types/pokemonAllViewTypes";
 
+import pokemonAllView from "../view/pokemonAllView";
+
 const LegendaryDescription = ({ legendaryPokes }:LegendaryDescriptionTypes) => {
+    const undefinedText = "undefined";
+    const defaultPoke = {
+        id: 144,
+        legendary: true,
+        name: "articuno",
+        sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/144.png",
+        generation: "generation-i",
+        genera: "Freeze Pokémon",
+        flavor_text_entries: "A legendary bird\nPOKéMON that is\nsaid to appear to\fdoomed people who\nare lost in icy\nmountains.",
+        abilities: [
+            "pressure",
+            "snow-cloak"
+        ],
+        types: [
+            "ice",
+            "flying"
+        ],
+        stats: [
+            {
+                name: "hp",
+                value: 90
+            },
+            {
+                name: "attack",
+                value: 85
+            },
+            {
+                name: "defense",
+                value: 100
+            },
+            {
+                name: "speed",
+                value: 85
+            },
+            {
+                name: "special-attack",
+                value: 95
+            },
+            {
+                name: "special-defense",
+                value: 125
+            }
+        ]
+    };
+    const [ pokeView, setPokeView ] = useState<pokemonAllViewTypes>(defaultPoke);
     const settings = {
         dots: false,
         infinite: true,
@@ -30,36 +75,23 @@ const LegendaryDescription = ({ legendaryPokes }:LegendaryDescriptionTypes) => {
         <Container>
             <div className="topContent">
                 <div className="leftArea">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/132.png" alt="Image pokemon" />
+                    <img src={pokeView.sprite} alt="Image pokemon" />
                 </div>
                 <div className="rightArea">
-                    <span className="title">MewTwo</span>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. </p>
+                    <span className="title">{pokeView.name}</span>
+                    <p>{pokeView.flavor_text_entries ? pokeView.flavor_text_entries : undefinedText}</p>
                     <div className="contentStatus">
-                        <ContentStatusElement
-                            name="Exemplo"
-                            value={48}
-                        />
-                        <ContentStatusElement
-                            name="Exemplo"
-                            value={48}
-                        />
-                        <ContentStatusElement
-                            name="Exemplo"
-                            value={48}
-                        />
-                        <ContentStatusElement
-                            name="Exemplo"
-                            value={48}
-                        />
-                        <ContentStatusElement
-                            name="Exemplo"
-                            value={48}
-                        />
-                        <ContentStatusElement
-                            name="Exemplo"
-                            value={48}
-                        />
+                        {
+                            pokeView.stats.map((e,k)=>{
+                                return(
+                                    <ContentStatusElement
+                                        key={k}
+                                        name={e.name}
+                                        value={e.value}
+                                    />
+                                );
+                            })
+                        }
                     </div>
                 </div>
             </div>
@@ -74,8 +106,7 @@ const LegendaryDescription = ({ legendaryPokes }:LegendaryDescriptionTypes) => {
                                     key={k}
                                     name={e.name}
                                     src={url}
-                                    click={()=>{
-                                    }}
+                                    click={()=>setPokeView(pokemonAllView.render(e))}
                                 />
                             );
                         })

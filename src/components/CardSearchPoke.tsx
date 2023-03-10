@@ -1,6 +1,9 @@
 import { selectColorsForType } from "../libs/selectColorsForType";
+
 import { Container } from "../styles/components/CardSearchPoke";
+
 import { CardSearchPokeTypes } from "../types/CardSearchPokeTypes";
+
 import StatesCircleVal from "./StatesCircleVal";
 
 const CardSearchPoke = ({ name, typing, valueAttk, valueDef, image, arrKey }: CardSearchPokeTypes)=>{

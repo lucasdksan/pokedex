@@ -1,4 +1,5 @@
 import { ContentStatusElementTypes } from "../types/ContentStatusElementTypes";
+
 import LineStatus from "./LineStatus";
 
 import { Container } from "../styles/components/ContentStatusElement";
