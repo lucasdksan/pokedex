@@ -7,7 +7,7 @@ const CustomSelectComponent = ({ arrOptions, firstElement, onChange }:CustomSele
         <Container
             onChange={(e)=>onChange(e.target.value)}
         >
-            <option>{firstElement}</option>
+            <option value="">{firstElement}</option>
             {
                 arrOptions.map((e,k)=>{
                     return(

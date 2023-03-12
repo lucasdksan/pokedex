@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+
 import { OpenDataModalProviderTypes, OpenDataModalContextTypes  } from "../types/OpenDataModalProviderTypes";
 import { pokemonAllSearch } from "../types/pokemonAllSearch";
 import { pokemonViewTypes } from "../types/pokemonViewTypes";

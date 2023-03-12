@@ -6,7 +6,7 @@ import { CardSearchPokeTypes } from "../types/CardSearchPokeTypes";
 
 import StatesCircleVal from "./StatesCircleVal";
 
-const CardSearchPoke = ({ name, typing, valueAttk, valueDef, image, arrKey }: CardSearchPokeTypes)=>{
+const CardSearchPoke = ({ name, typing, valueAttk, valueDef, image, onClick }: CardSearchPokeTypes)=>{
     function handlerModifyColor(color?:string){
         if(color){
             return selectColorsForType(color);
@@ -23,7 +23,7 @@ const CardSearchPoke = ({ name, typing, valueAttk, valueDef, image, arrKey }: Ca
     return(
         <Container 
             colorCss={handlerModifyColor()}
-            onClick={()=>{console.log("Oi lucas: ", arrKey)}}
+            onClick={()=>onClick()}
         >
             <div className="leftArea">
                 <span className="cardName">{name}</span>

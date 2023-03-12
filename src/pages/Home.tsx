@@ -17,7 +17,7 @@ const Home = () => {
                             <h1><strong>Find</strong> all your favorite <strong>Pokemon</strong></h1>
                         </div>
                         <div className="middleContent">
-                            <p>You can know the type of Pokemon, its strengths, disadvantages and abilities</p>
+                            <p>You can know the type of Pokémon, their strengths and abilities</p>
                         </div>
                         <div className="bottomContent">
                             <Link to="/pokedex">

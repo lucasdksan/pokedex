@@ -91,6 +91,11 @@ export const Container = styled.div`
                         line-height: 14px;
                         text-align: center;
                         color: ${colors.FullWhite};
+
+                        &.btn-clear {
+                            background-color: ${colors.DangerColor};
+                            margin-left: 20px;
+                        }
                     }
 
                     select,

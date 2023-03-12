@@ -14,8 +14,6 @@ import { selectColorsForTypeShadow } from "../libs/selectColorsForTypeShadow";
 const CardPokeModal = ()=>{
     const { pokemon } = useContext(OpenDataModalContext);
 
-    console.log(pokemon)
-
     function handlerSelectColor(shadow: boolean){
         if(shadow){
             if(typeof pokemon.types == "object"){
@@ -113,42 +111,24 @@ const CardPokeModal = ()=>{
                     </WhiteBox>
                 </div>
                 <div className="bottomCard">
-                    <WhiteBox 
-                        valueWidth="150px"
-                        valuePadding="10px 20px"
-                    >
-                        <StatesCircleVal 
-                            name="Defense"
-                            value={pokemon.stats[2].value}
-                        />
-                    </WhiteBox>
-                    <WhiteBox
-                        valueWidth="150px"
-                        valuePadding="10px 20px"
-                    >
-                        <StatesCircleVal 
-                            name="Attack"
-                            value={pokemon.stats[1].value}
-                        />
-                    </WhiteBox>
-                    <WhiteBox
-                        valueWidth="150px"
-                        valuePadding="10px 20px"
-                    >
-                        <StatesCircleVal 
-                            name="Sp Defense"
-                            value={pokemon.stats[4].value}
-                        />
-                    </WhiteBox>
-                    <WhiteBox
-                        valueWidth="150px"
-                        valuePadding="10px 20px"
-                    >
-                        <StatesCircleVal 
-                            name="Sp Attack"
-                            value={pokemon.stats[3].value}
-                        />
-                    </WhiteBox>
+                    {
+                        pokemon.stats.map((e,k)=>{
+                            if(e.name !== "hp" && e.name !== "speed"){
+                                return(
+                                    <WhiteBox 
+                                        valueWidth="150px"
+                                        valuePadding="10px 20px"
+                                        key={k}
+                                    >
+                                        <StatesCircleVal 
+                                            name={e.name.includes("special-") ? e.name.replace("special-", "Sp ") : e.name}
+                                            value={e.value}
+                                        />
+                                    </WhiteBox>
+                                );
+                            }
+                        })
+                    }
                 </div>
             </div>
         </Container>

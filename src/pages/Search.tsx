@@ -10,6 +10,7 @@ import Loading from "../components/Loading";
 
 import { searchPoke } from "../services/get/searchPoke";
 import { getAllPokemons } from "../services/get/allPokemons";
+import { searchDataPoke } from "../services/get/searchDataPoke";
 
 import {
     CustomSelectComponentDataRegion, 
@@ -18,19 +19,23 @@ import {
 
 import { pokemonEntriesTypes } from "../types/pokemonEntriesTypes";
 import { pokemonTypes } from "../types/pokemonTypes";
+import { pokemonAllSearch } from "../types/pokemonAllSearch";
 
 import pokeView from "../view/pokemonView";
+import pokemonAllView from "../view/pokemonAllView";
 
 import { OpenDataModalContext } from "../contexts/OpenDataModal";
 
-import { searchDataPoke } from "../services/get/searchDataPoke";
+import { filterRT, filterRegion, filterType } from "../libs/filterListPokemon";
 
 const Search = ()=>{
     const [ pokeSearch, setPokeSearch ] = useState("");
-    const [ searchResult, setSearchResult ] = useState<pokemonTypes>();
     const [ pokeFileterType, setPokeFileterType ] = useState("");
     const [ pokeFileterRegion, setPokeFileterRegion ] = useState("");
+    const [ openFilter, setOpenFilter ] = useState(false);
+    const [ searchResult, setSearchResult ] = useState<pokemonTypes>();
     const [ arrDataAllPokemons, setArrDataAllPokemons ] = useState<pokemonEntriesTypes[]>([]);
+    const [ filtedPokemon, setFiltedPokemon ] = useState<pokemonAllSearch[]>([]);
 
     const { SetOpenModal, SetPokemon, SetOpenModalError, SetAllPokemons, allPokemon } = useContext(OpenDataModalContext);
 
@@ -44,8 +49,33 @@ const Search = ()=>{
         }
     }
 
-    const handlePokeFilter = ()=>{
+    const handleClearFilter = ()=>{
+        setOpenFilter(false);
+        setFiltedPokemon([]);
+    }
 
+    const handlePokeFilter = ()=>{
+        if(pokeFileterRegion !== "" || pokeFileterType !== ""){
+            if(pokeFileterRegion !== "" && pokeFileterType === "") {
+                let arrRegion = filterRegion(pokeFileterRegion, allPokemon);
+
+                setFiltedPokemon(arrRegion);
+            }
+            else if(pokeFileterRegion === "" && pokeFileterType !== "") {
+                let arrType = filterType(pokeFileterType, allPokemon);
+
+                setFiltedPokemon(arrType);
+            }
+            else {
+                let arrRT = filterRT(pokeFileterType, pokeFileterRegion, allPokemon);
+
+                setFiltedPokemon(arrRT);
+            }
+
+            setOpenFilter(true);
+        } else {
+            alert("Selecione um dos elementos de filtragem!!");
+        }
     }
 
     const handleGetAllPokemons = async ()=>{
@@ -60,6 +90,17 @@ const Search = ()=>{
 
     const handlePokeFilterChangeRegion = (key:string)=>{
         setPokeFileterRegion(key);
+    }
+
+    const handlerSetPokeId = (key: number)=>{
+        const filterPokemon = allPokemon.filter((e)=>{
+            return e.id === key;
+        });
+        const openPokemon = filterPokemon[0];
+        const convert = pokemonAllView.convert(openPokemon);
+
+        SetPokemon(convert);
+        SetOpenModal();
     }
 
     const handlerPokeAll = async ()=>{
@@ -124,15 +165,19 @@ const Search = ()=>{
                                 onChange={handlePokeFilterChangeRegion}
                             />
                             <button onClick={handlePokeFilter}>Filter</button>
+                            <button onClick={handleClearFilter} className="btn-clear">Clear</button>
                         </div>
                     </div>
                     <div className="contentList" style={{ display: allPokemon.length > 0 ? "grid" : "flex" }}>
                         {
                             allPokemon.length == 0 &&
-                            <Loading />
+                            <Loading
+                                h={400}
+                                w={400}
+                            />
                         }
                         {
-                            allPokemon.length > 0 &&
+                            (allPokemon.length > 0 && !openFilter) &&
                             allPokemon.map((e, k)=>{
                                 let arrTypes: string[] = [];
                                 let url = e.sprites.other.home.front_default !== null ? e.sprites.other.home.front_default as string : Object.values(e.sprites.other)[2].front_default as string;
@@ -149,7 +194,30 @@ const Search = ()=>{
                                         typing={arrTypes}
                                         valueAttk={e.stats[0].base_stat}
                                         valueDef={e.stats[2].base_stat}
-                                        arrKey={k}
+                                        onClick={()=>handlerSetPokeId(e.id)}
+                                    />
+                                );
+                            })
+                        }
+                        {
+                            (filtedPokemon.length > 0 && openFilter) &&
+                            filtedPokemon.map((e,k)=>{
+                                let arrTypes: string[] = [];
+                                let url = e.sprites.other.home.front_default !== null ? e.sprites.other.home.front_default as string : Object.values(e.sprites.other)[2].front_default as string;
+
+                                e.types.forEach((es)=>{
+                                    arrTypes.push(es.type.name);
+                                });
+
+                                return(
+                                    <CardSearchPoke 
+                                        key={k}
+                                        image={url}
+                                        name={e.name}
+                                        typing={arrTypes}
+                                        valueAttk={e.stats[0].base_stat}
+                                        valueDef={e.stats[2].base_stat}
+                                        onClick={()=>handlerSetPokeId(e.id)}
                                     />
                                 );
                             })

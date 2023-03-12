@@ -1,118 +1,118 @@
 const CustomSelectComponentDataType = [
     {
         value: "Normal",
-        key: "/type/1"
+        key: "normal"
     },
     {
         value: "Fighting",
-        key: "/type/2"
+        key: "fighting"
     },
     {
         value: "Flying",
-        key: "/type/3"
+        key: "flying"
     },
     {
         value: "Poison",
-        key: "/type/4"
+        key: "poison"
     },
     {
         value: "Ground",
-        key: "/type/5"
+        key: "ground"
     },
     {
         value: "Rock",
-        key: "/type/6"
+        key: "rock"
     },
     {
         value: "Bug",
-        key: "/type/7"
+        key: "bug"
     },
     {
         value: "Ghost",
-        key: "/type/8"
+        key: "ghost"
     },
     {
         value: "Steel",
-        key: "/type/9"
+        key: "steel"
     },
     {
         value: "Fire",
-        key: "/type/10"
+        key: "fire"
     },
     {
         value: "Water",
-        key: "/type/11"
+        key: "water"
     },
     {
         value: "Grass",
-        key: "/type/12"
+        key: "grass"
     },
     {
         value: "Electric",
-        key: "/type/13"
+        key: "electric"
     },
     {
         value: "Psychic",
-        key: "/type/14"
+        key: "psychic"
     },
     {
         value: "Ice",
-        key: "/type/15"
+        key: "ice"
     },
     {
         value: "Dragon",
-        key: "/type/16"
+        key: "dragon"
     },
     {
         value: "Dark",
-        key: "/type/17"
+        key: "dark"
     },
     {
         value: "Fairy",
-        key: "/type/18"
+        key: "fairy"
     }
 ];
 
 const CustomSelectComponentDataRegion = [
     {
         value: "Kanto",
-        key: "/region/1"
+        key: "generation-i"
     },
     {
         value: "Johto",
-        key: "/region/2"
+        key: "generation-ii"
     },
     {
         value: "Hoenn",
-        key: "/region/3"
+        key: "generation-iii"
     },
     {
         value: "Sinnoh",
-        key: "/region/4"
+        key: "generation-iv"
     },
     {
         value: "Unova",
-        key: "/region/5"
+        key: "generation-v"
     },
     {
         value: "Kalos",
-        key: "/region/6"
+        key: "generation-vi"
     },
     {
         value: "Alola",
-        key: "/region/7"
+        key: "generation-vii"
     },
     {
         value: "Galar",
-        key: "/region/8"
+        key: "generation-viii"
     },
     {
         value: "Hisui",
-        key: "/region/9"
+        key: "generation-viii"
     },
     {
         value: "Paldea",
-        key: "/region/10"
+        key: "generation-ix"
     }
 ];
 

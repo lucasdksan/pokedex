@@ -4,6 +4,8 @@ import { Container } from "../styles/components/Loading";
 
 import Animation from "../assets/search/loadingAnimation.json";
 
+import { LoadingTypes } from "../types/LoadingTypes";
+
 const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -13,15 +15,17 @@ const defaultOptions = {
     }
 };
 
-const Loading = ()=>{
+const Loading = ({ h, w }:LoadingTypes)=>{
     return(
         <Container>
             <Lottie
                 options={defaultOptions}
                 style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    height: h ? `${h}px` : "250px",
+                    width: w ? `${w}px` : "250px"
                 }}
             />
         </Container>
