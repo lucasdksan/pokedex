@@ -132,6 +132,28 @@ export const Container = styled.div`
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
                 gap: 20px;
+                margin-bottom: 20px;
+            }
+        }
+
+        .btn-more {
+            padding: 10px 30px;
+            border-radius: 15px;
+            background-color: ${colors.BtnColor};
+
+            font-family: ${fonts.robo};
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 14px;
+            text-align: center;
+            color: ${colors.FullWhite};
+            transition: all 1;
+
+            &:hover {
+                transition: all 1;
+                background-color: ${colors.DarkBtnColor};
+                cursor: pointer;
             }
         }
     }

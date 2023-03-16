@@ -13,8 +13,8 @@ import { getAllPokemons } from "../services/get/allPokemons";
 import { searchDataPoke } from "../services/get/searchDataPoke";
 
 import {
-    CustomSelectComponentDataRegion, 
-    CustomSelectComponentDataType 
+    CustomSelectComponentDataRegion,
+    CustomSelectComponentDataType
 } from "../data/CustomSelectComponentData";
 
 import { pokemonEntriesTypes } from "../types/pokemonEntriesTypes";
@@ -28,40 +28,41 @@ import { OpenDataModalContext } from "../contexts/OpenDataModal";
 
 import { filterRT, filterRegion, filterType } from "../libs/filterListPokemon";
 
-const Search = ()=>{
-    const [ pokeSearch, setPokeSearch ] = useState("");
-    const [ pokeFileterType, setPokeFileterType ] = useState("");
-    const [ pokeFileterRegion, setPokeFileterRegion ] = useState("");
-    const [ openFilter, setOpenFilter ] = useState(false);
-    const [ searchResult, setSearchResult ] = useState<pokemonTypes>();
-    const [ arrDataAllPokemons, setArrDataAllPokemons ] = useState<pokemonEntriesTypes[]>([]);
-    const [ filtedPokemon, setFiltedPokemon ] = useState<pokemonAllSearch[]>([]);
+const Search = () => {
+    const [pokeSearch, setPokeSearch] = useState("");
+    const [pokeFileterType, setPokeFileterType] = useState("");
+    const [pokeFileterRegion, setPokeFileterRegion] = useState("");
+    const [openFilter, setOpenFilter] = useState(false);
+    const [len, setLen] = useState(9);
+    const [searchResult, setSearchResult] = useState<pokemonTypes>();
+    const [arrDataAllPokemons, setArrDataAllPokemons] = useState<pokemonEntriesTypes[]>([]);
+    const [filtedPokemon, setFiltedPokemon] = useState<pokemonAllSearch[]>([]);
 
     const { SetOpenModal, SetPokemon, SetOpenModalError, SetAllPokemons, allPokemon } = useContext(OpenDataModalContext);
 
-    const handlePokeSearch = async ()=>{
+    const handlePokeSearch = async () => {
         let { result, stats } = await searchPoke(pokeSearch);
 
-        if(stats){
+        if (stats) {
             setSearchResult(result);
         } else {
             SetOpenModalError();
         }
     }
 
-    const handleClearFilter = ()=>{
+    const handleClearFilter = () => {
         setOpenFilter(false);
         setFiltedPokemon([]);
     }
 
-    const handlePokeFilter = ()=>{
-        if(pokeFileterRegion !== "" || pokeFileterType !== ""){
-            if(pokeFileterRegion !== "" && pokeFileterType === "") {
+    const handlePokeFilter = () => {
+        if (pokeFileterRegion !== "" || pokeFileterType !== "") {
+            if (pokeFileterRegion !== "" && pokeFileterType === "") {
                 let arrRegion = filterRegion(pokeFileterRegion, allPokemon);
 
                 setFiltedPokemon(arrRegion);
             }
-            else if(pokeFileterRegion === "" && pokeFileterType !== "") {
+            else if (pokeFileterRegion === "" && pokeFileterType !== "") {
                 let arrType = filterType(pokeFileterType, allPokemon);
 
                 setFiltedPokemon(arrType);
@@ -78,22 +79,22 @@ const Search = ()=>{
         }
     }
 
-    const handleGetAllPokemons = async ()=>{
+    const handleGetAllPokemons = async () => {
         const allPokemons = await getAllPokemons();
-        
+
         setArrDataAllPokemons(allPokemons.pokemon_entries);
     }
-    
-    const handlePokeFilterChangeType = (key:string)=>{
+
+    const handlePokeFilterChangeType = (key: string) => {
         setPokeFileterType(key);
     }
 
-    const handlePokeFilterChangeRegion = (key:string)=>{
+    const handlePokeFilterChangeRegion = (key: string) => {
         setPokeFileterRegion(key);
     }
 
-    const handlerSetPokeId = (key: number)=>{
-        const filterPokemon = allPokemon.filter((e)=>{
+    const handlerSetPokeId = (key: number) => {
+        const filterPokemon = allPokemon.filter((e) => {
             return e.id === key;
         });
         const openPokemon = filterPokemon[0];
@@ -103,11 +104,11 @@ const Search = ()=>{
         SetOpenModal();
     }
 
-    const handlerPokeAll = async ()=>{
+    const handlerPokeAll = async () => {
         const arrAllObjs = [];
 
-        if(arrDataAllPokemons.length > 0){
-            for(let i in arrDataAllPokemons){
+        if (arrDataAllPokemons.length > 0) {
+            for (let i = 0; i < 9; i++) {
                 let obj = await searchDataPoke(arrDataAllPokemons[i]);
                 arrAllObjs.push(obj);
             }
@@ -116,28 +117,44 @@ const Search = ()=>{
         SetAllPokemons(arrAllObjs);
     }
 
-    useEffect(()=>{
+    const handlerMorePokemons = async () => {
+        const arrAllObjsMore = [...allPokemon];
+
+        let lenMore = len < arrDataAllPokemons.length ? len + 9 : arrDataAllPokemons.length;
+
+        if (arrDataAllPokemons.length > 0) {
+            for(let i = len; i < lenMore; i++){
+                let obj = await searchDataPoke(arrDataAllPokemons[i]);
+                arrAllObjsMore.push(obj);
+            }
+        }
+
+        SetAllPokemons(arrAllObjsMore);
+        setLen(lenMore);
+    }
+
+    useEffect(() => {
         let convert;
 
-        if(searchResult != undefined) {
+        if (searchResult != undefined) {
             convert = pokeView.render(searchResult);
             SetPokemon(convert);
             SetOpenModal();
         }
 
-    },[searchResult])
+    }, [searchResult])
 
-    useEffect(()=>{
+    useEffect(() => {
         handleGetAllPokemons();
-    },[]);
+    }, []);
 
-    useEffect(()=>{
-        if(allPokemon.length === 0){
+    useEffect(() => {
+        if (allPokemon.length === 0) {
             handlerPokeAll();
         }
-    },[arrDataAllPokemons]);
+    }, [arrDataAllPokemons]);
 
-    return(
+    return (
         <>
             <Header />
             <Container>
@@ -145,21 +162,21 @@ const Search = ()=>{
                     <h1>+1000 <strong>Pokemons</strong> for you to choose your favorite</h1>
                     <div className="containerSearch">
                         <div className="contentInput">
-                            <input 
-                                type="text" 
+                            <input
+                                type="text"
                                 placeholder="Search Pokémon..."
                                 value={pokeSearch}
-                                onChange={(e)=>setPokeSearch(e.target.value.toLowerCase())}
+                                onChange={(e) => setPokeSearch(e.target.value.toLowerCase())}
                             />
                             <button onClick={handlePokeSearch}>Search</button>
                         </div>
                         <div className="lineOptions">
-                            <CustomSelectComponent 
+                            <CustomSelectComponent
                                 arrOptions={CustomSelectComponentDataType}
                                 firstElement="Type"
                                 onChange={handlePokeFilterChangeType}
                             />
-                            <CustomSelectComponent 
+                            <CustomSelectComponent
                                 arrOptions={CustomSelectComponentDataRegion}
                                 firstElement="Region"
                                 onChange={handlePokeFilterChangeRegion}
@@ -178,51 +195,55 @@ const Search = ()=>{
                         }
                         {
                             (allPokemon.length > 0 && !openFilter) &&
-                            allPokemon.map((e, k)=>{
+                            allPokemon.map((e, k) => {
                                 let arrTypes: string[] = [];
                                 let url = e.sprites.other.home.front_default !== null ? e.sprites.other.home.front_default as string : Object.values(e.sprites.other)[2].front_default as string;
 
-                                e.types.forEach((es)=>{
+                                e.types.forEach((es) => {
                                     arrTypes.push(es.type.name);
                                 });
 
-                                return(
-                                    <CardSearchPoke 
+                                return (
+                                    <CardSearchPoke
                                         key={k}
                                         image={url}
                                         name={e.name}
                                         typing={arrTypes}
                                         valueAttk={e.stats[0].base_stat}
                                         valueDef={e.stats[2].base_stat}
-                                        onClick={()=>handlerSetPokeId(e.id)}
+                                        onClick={() => handlerSetPokeId(e.id)}
                                     />
                                 );
                             })
                         }
                         {
                             (filtedPokemon.length > 0 && openFilter) &&
-                            filtedPokemon.map((e,k)=>{
+                            filtedPokemon.map((e, k) => {
                                 let arrTypes: string[] = [];
                                 let url = e.sprites.other.home.front_default !== null ? e.sprites.other.home.front_default as string : Object.values(e.sprites.other)[2].front_default as string;
 
-                                e.types.forEach((es)=>{
+                                e.types.forEach((es) => {
                                     arrTypes.push(es.type.name);
                                 });
 
-                                return(
-                                    <CardSearchPoke 
+                                return (
+                                    <CardSearchPoke
                                         key={k}
                                         image={url}
                                         name={e.name}
                                         typing={arrTypes}
                                         valueAttk={e.stats[0].base_stat}
                                         valueDef={e.stats[2].base_stat}
-                                        onClick={()=>handlerSetPokeId(e.id)}
+                                        onClick={() => handlerSetPokeId(e.id)}
                                     />
                                 );
                             })
                         }
                     </div>
+                    <button
+                        className="btn-more"
+                        onClick={handlerMorePokemons}
+                    >More</button>
                 </section>
             </Container>
             <ModalOpenCard />
