@@ -13,12 +13,12 @@ import { LegendaryDescriptionTypes } from "../types/LegendaryDescriptionTypes";
 import { pokemonAllViewTypes } from "../types/pokemonAllViewTypes";
 
 import pokemonAllView from "../view/pokemonAllView";
-import { defaultPoke } from "../data/defaultPokemon";
 
-const LegendaryDescription = ({ legendaryPokes }:LegendaryDescriptionTypes) => {
+const LegendaryDescription = ({ legendaryPokes, defaultPk }:LegendaryDescriptionTypes) => {
+    console.log("Lucas: ", legendaryPokes);
     const undefinedText = "undefined";
     
-    const [ pokeView, setPokeView ] = useState<pokemonAllViewTypes>(defaultPoke);
+    const [ pokeView, setPokeView ] = useState<pokemonAllViewTypes>(defaultPk);
     const settings = {
         dots: false,
         infinite: true,

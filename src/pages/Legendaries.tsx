@@ -12,6 +12,8 @@ import { Container } from "../styles/pages/Legendaries";
 import { pokemonEntriesTypes } from "../types/pokemonEntriesTypes";
 import { pokemonAllSearch } from "../types/pokemonAllSearch";
 
+import { defaultPokes } from "../data/defaultPokemon";
+
 const Legendaries = () => {
     const [allPokes, setAllPokes] = useState<pokemonEntriesTypes[]>([]);
     const [allLegendary, setAllLegendary] = useState<pokemonAllSearch[]>([]);
@@ -70,6 +72,7 @@ const Legendaries = () => {
                             </div>
                             <LegendaryDescription
                                 legendaryPokes={allLegendary}
+                                defaultPk={defaultPokes[0]}
                             />
                         </section>
                         <section className="strongerLegendaries">
@@ -78,6 +81,7 @@ const Legendaries = () => {
                             </div>
                             <LegendaryDescription
                                 legendaryPokes={allLegendaryStrong}
+                                defaultPk={defaultPokes[1]}
                             />
                         </section>
                         <section className="weakerLegendaries">
@@ -86,6 +90,7 @@ const Legendaries = () => {
                             </div>
                             <LegendaryDescription
                                 legendaryPokes={allLegendaryWeaker}
+                                defaultPk={defaultPokes[2]}
                             />
                         </section>
                     </>) : (

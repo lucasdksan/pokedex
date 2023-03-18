@@ -33,12 +33,27 @@ const Search = () => {
     const [pokeFileterType, setPokeFileterType] = useState("");
     const [pokeFileterRegion, setPokeFileterRegion] = useState("");
     const [openFilter, setOpenFilter] = useState(false);
-    const [len, setLen] = useState(9);
+    const [len, setLen] = useState(18);
     const [searchResult, setSearchResult] = useState<pokemonTypes>();
     const [arrDataAllPokemons, setArrDataAllPokemons] = useState<pokemonEntriesTypes[]>([]);
+    const [tempAllPokemon, setTempAllPokemon] = useState<pokemonAllSearch[]>([]);
     const [filtedPokemon, setFiltedPokemon] = useState<pokemonAllSearch[]>([]);
 
     const { SetOpenModal, SetPokemon, SetOpenModalError, SetAllPokemons, allPokemon } = useContext(OpenDataModalContext);
+
+    const handleTempAllPokemon = async () => {
+        const arrAllObjsMore = [];
+
+        if (arrDataAllPokemons.length > 0) {
+            for (let i in arrDataAllPokemons) {
+                let obj = await searchDataPoke(arrDataAllPokemons[i]);
+                arrAllObjsMore.push(obj);
+            }
+        }
+
+        setTempAllPokemon(arrAllObjsMore);
+        console.log(arrAllObjsMore);
+    }
 
     const handlePokeSearch = async () => {
         let { result, stats } = await searchPoke(pokeSearch);
@@ -120,10 +135,10 @@ const Search = () => {
     const handlerMorePokemons = async () => {
         const arrAllObjsMore = [...allPokemon];
 
-        let lenMore = len < arrDataAllPokemons.length ? len + 9 : arrDataAllPokemons.length;
+        let lenMore = len < arrDataAllPokemons.length ? len + 18 : arrDataAllPokemons.length;
 
         if (arrDataAllPokemons.length > 0) {
-            for(let i = len; i < lenMore; i++){
+            for (let i = len; i < lenMore; i++) {
                 let obj = await searchDataPoke(arrDataAllPokemons[i]);
                 arrAllObjsMore.push(obj);
             }
@@ -152,6 +167,7 @@ const Search = () => {
         if (allPokemon.length === 0) {
             handlerPokeAll();
         }
+        handleTempAllPokemon();
     }, [arrDataAllPokemons]);
 
     return (
