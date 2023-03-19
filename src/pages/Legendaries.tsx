@@ -13,6 +13,7 @@ import { pokemonEntriesTypes } from "../types/pokemonEntriesTypes";
 import { pokemonAllSearch } from "../types/pokemonAllSearch";
 
 import { defaultPokes } from "../data/defaultPokemon";
+import UpButton from "../components/UpButton";
 
 const Legendaries = () => {
     const [allPokes, setAllPokes] = useState<pokemonEntriesTypes[]>([]);
@@ -97,10 +98,12 @@ const Legendaries = () => {
                         <Loading
                             h={500}
                             w={500}
+                            fullHeight={true}
                         />
                     )
                 }
             </Container>
+            <UpButton />
         </>
     );
 }

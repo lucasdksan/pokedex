@@ -15,9 +15,11 @@ const defaultOptions = {
     }
 };
 
-const Loading = ({ h, w }:LoadingTypes)=>{
+const Loading = ({ h, w, fullHeight }:LoadingTypes)=>{
     return(
-        <Container>
+        <Container
+            fullHeight={fullHeight}
+        >
             <Lottie
                 options={defaultOptions}
                 style={{

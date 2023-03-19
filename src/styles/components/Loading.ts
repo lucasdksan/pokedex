@@ -1,8 +1,9 @@
+import { LoadingTypesCss } from './../../types/LoadingTypes';
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div<LoadingTypesCss>`
     width: 100%;
-    height: 100vh;
+    height: ${props => props.fullHeight ? "calc(100vh - 90px)" : "100%"};
     display: flex;
     align-items: center;
     justify-content: center;

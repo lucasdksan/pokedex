@@ -1,6 +1,5 @@
 import { ModalOpenCardCss } from './../../types/ModalOpenCardTypes';
 import styled from "styled-components";
-import { sizes } from "../themes";
 
 export const Container = styled.section<ModalOpenCardCss>`
     display: ${props => props.open ? "flex" : "none"};

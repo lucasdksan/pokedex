@@ -1,6 +1,5 @@
-import { fonts } from './../themes/fonts';
 import styled from "styled-components";
-import { colors } from "../themes";
+import { colors, fonts } from "../themes";
 
 export const Container = styled.div`
     overflow: hidden;

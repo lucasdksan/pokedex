@@ -27,6 +27,8 @@ import pokemonAllView from "../view/pokemonAllView";
 import { OpenDataModalContext } from "../contexts/OpenDataModal";
 
 import { filterRT, filterRegion, filterType } from "../libs/filterListPokemon";
+import { personalAlert } from "../libs/alertPkt";
+import UpButton from "../components/UpButton";
 
 const Search = () => {
     const [pokeSearch, setPokeSearch] = useState("");
@@ -38,6 +40,7 @@ const Search = () => {
     const [arrDataAllPokemons, setArrDataAllPokemons] = useState<pokemonEntriesTypes[]>([]);
     const [tempAllPokemon, setTempAllPokemon] = useState<pokemonAllSearch[]>([]);
     const [filtedPokemon, setFiltedPokemon] = useState<pokemonAllSearch[]>([]);
+    const [openMoreBtn, setOpenMoreBtn] = useState(true);
 
     const { SetOpenModal, SetPokemon, SetOpenModalError, SetAllPokemons, allPokemon } = useContext(OpenDataModalContext);
 
@@ -52,7 +55,6 @@ const Search = () => {
         }
 
         setTempAllPokemon(arrAllObjsMore);
-        console.log(arrAllObjsMore);
     }
 
     const handlePokeSearch = async () => {
@@ -71,6 +73,11 @@ const Search = () => {
     }
 
     const handlePokeFilter = () => {
+
+        if(tempAllPokemon.length === 0 || tempAllPokemon.length < allPokemon.length) {
+            personalAlert("Waiting for update of all pokemons");
+        }
+
         if (pokeFileterRegion !== "" || pokeFileterType !== "") {
             if (pokeFileterRegion !== "" && pokeFileterType === "") {
                 let arrRegion = filterRegion(pokeFileterRegion, allPokemon);
@@ -89,8 +96,16 @@ const Search = () => {
             }
 
             setOpenFilter(true);
+            setOpenMoreBtn(false);
         } else {
-            alert("Selecione um dos elementos de filtragem!!");
+            personalAlert("Select one of the filter elements!!");
+        }
+    }
+
+    const handleUpdatePokemon= ()=>{
+        if(tempAllPokemon.length > 0) {
+            SetAllPokemons(tempAllPokemon);
+            setOpenMoreBtn(false);
         }
     }
 
@@ -199,6 +214,13 @@ const Search = () => {
                             />
                             <button onClick={handlePokeFilter}>Filter</button>
                             <button onClick={handleClearFilter} className="btn-clear">Clear</button>
+                            {
+                                (tempAllPokemon.length > 0) &&
+                                (tempAllPokemon.length !== allPokemon.length) &&
+                                (
+                                    <button onClick={handleUpdatePokemon} className="btn-all">All Pokemon</button>
+                                )
+                            }
                         </div>
                     </div>
                     <div className="contentList" style={{ display: allPokemon.length > 0 ? "grid" : "flex" }}>
@@ -207,6 +229,7 @@ const Search = () => {
                             <Loading
                                 h={400}
                                 w={400}
+                                fullHeight={false}
                             />
                         }
                         {
@@ -256,13 +279,20 @@ const Search = () => {
                             })
                         }
                     </div>
-                    <button
-                        className="btn-more"
-                        onClick={handlerMorePokemons}
-                    >More</button>
+                    {
+                        (allPokemon.length > 0 && openMoreBtn) &&
+                        (
+                            <button
+                                className="btn-more"
+                                onClick={handlerMorePokemons}
+                            >More</button>
+                        )
+                    }
+                    
                 </section>
             </Container>
             <ModalOpenCard />
+            <UpButton />
         </>
     );
 }

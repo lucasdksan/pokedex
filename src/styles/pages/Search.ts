@@ -96,6 +96,12 @@ export const Container = styled.div`
                             background-color: ${colors.DangerColor};
                             margin-left: 20px;
                         }
+
+                        &.btn-all {
+                            background-color: ${colors.Deuteranopia.d1};
+                            margin-left: 20px;
+                            width: auto;
+                        }
                     }
 
                     select,
