@@ -5,7 +5,7 @@ export const Container = styled.main`
     margin-top: 90px;
     background: linear-gradient(180deg, #F5DB13 0%, #F2B807 100%);
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 90px);
 
     section {
         max-width: ${sizes.desk};
@@ -76,7 +76,8 @@ export const Container = styled.main`
         }
 
         img {
-            margin-right: -25%;
+            height: 600px;
+            width: auto;
         }
     }
 `;
