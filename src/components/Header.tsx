@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { Container, ContentOptions, Elements, LeftArea, Nav, RightArea, ContentBody } from "../styles/components/Header";
+import { Container, ContentOptions, Elements, LeftArea, Nav, RightArea, ContentBody, BtnMenu } from "../styles/components/Header";
 
 import Logo from "../assets/header/Logo.svg";
+import iconBtn from "../assets/header/BurgenBtn.svg"
 
 const Header = () => {
     const [ keys, setKeys ] = useState({
@@ -80,15 +81,11 @@ const Header = () => {
                                     onClick={handlerURL}
                                 >Legendaries</Link>
                             </Elements>
-                            <Elements>
-                                <Link 
-                                    className={keys.doc ? "active" : ""} 
-                                    to="/doc"
-                                    onClick={handlerURL}
-                                >Documentation</Link>
-                            </Elements>
                         </ContentOptions>
                     </Nav>
+                    <BtnMenu>
+                        <img src={iconBtn} alt="Icon Btn" />
+                    </BtnMenu>
                 </RightArea>
             </ContentBody>
         </Container>

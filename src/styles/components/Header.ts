@@ -21,6 +21,26 @@ export const ContentBody = styled.div`
     display: inline-flex;
     justify-content: space-between;
     max-width: ${sizes.desk};
+
+    @media(max-width: 1140px){
+        max-width: ${sizes.deskEnd};
+    }
+
+    @media(max-width: 950px){
+        max-width: ${sizes.tablet};
+    }
+
+    @media(max-width: 770px){
+        max-width: ${sizes.tabletEnd};
+    }
+
+    @media(max-width: 620px){
+        max-width: ${sizes.mobile};
+    }
+
+    @media(max-width: 440px){
+        max-width: ${sizes.mobileEnd};
+    }
 `;
 
 export const LeftArea = styled.div`
@@ -36,6 +56,18 @@ export const RightArea = styled.div`
 
 export const Nav = styled.nav`
     display: block;
+
+    @media(max-width: 620px){
+        display: none;
+    }
+`;
+
+export const BtnMenu = styled.button`
+    display: none;
+
+    @media(max-width: 620px){
+        display: flex;
+    }
 `;
 
 export const ContentOptions = styled.ul`
@@ -47,6 +79,10 @@ export const ContentOptions = styled.ul`
 
 export const Elements = styled.li`
     padding: 0px 30px;
+
+    @media(max-width: 770px){
+        padding: 0px 10px;
+    }
 
     &:first-child {
         margin-left: 0px;

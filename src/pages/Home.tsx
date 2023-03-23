@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import Header from "../components/Header";
 
-import Banner from "../assets/home/banner.svg";
+import Banner from "../assets/home/BannerComplete.svg";
 
 import { Container } from "../styles/pages/Home";
 
