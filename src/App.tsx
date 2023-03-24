@@ -1,4 +1,5 @@
 import { RouterProvider } from "react-router-dom";
+import { ModalMobileProvider } from "./contexts/ModalMobile";
 import { OpenDataModalProvider } from "./contexts/OpenDataModal";
 import router from "./router";
 
@@ -8,9 +9,11 @@ function App() {
   return (
     <>
       <GlobalStyles />
-      <OpenDataModalProvider>
-        <RouterProvider router={router} />
-      </OpenDataModalProvider>
+      <ModalMobileProvider>
+        <OpenDataModalProvider>
+          <RouterProvider router={router} />
+        </OpenDataModalProvider>
+      </ModalMobileProvider>
     </>
   )
 }
