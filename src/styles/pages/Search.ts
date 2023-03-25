@@ -16,6 +16,22 @@ export const Container = styled.div`
         flex-direction: column;
         margin: 0 auto;
 
+        @media(max-width: 1140px){
+            max-width: ${sizes.deskEnd};
+        }
+
+        @media(max-width: 950px){
+            max-width: ${sizes.tablet};
+        }
+
+        @media(max-width: 770px){
+            max-width: ${sizes.tabletEnd};
+        }
+
+        @media(max-width: 620px){
+            max-width: ${sizes.mobile};
+        }
+
         h1 {
             font-family: ${fonts.main};
             font-style: normal;
@@ -139,6 +155,10 @@ export const Container = styled.div`
                 grid-template-columns: repeat(3, 1fr);
                 gap: 20px;
                 margin-bottom: 20px;
+
+                @media(max-width: 1140px){
+                    gap: 15px 8px;
+                }
             }
         }
 

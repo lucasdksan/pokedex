@@ -14,6 +14,10 @@ export const Container = styled.div<CardSearchPokeTypesCss>`
     height: 150px;
     overflow: hidden;
     cursor: pointer;
+
+    @media(max-width: 1140px){
+        max-width: 300px;
+    }
     
     .leftArea {
         display: flex;
@@ -57,6 +61,10 @@ export const Container = styled.div<CardSearchPokeTypesCss>`
                 box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.18);
                 border-radius: 12px;
                 padding: 5px 15px;
+
+                @media(max-width: 1140px){
+                    padding: 5px 10px;
+                }
             }
         }
     }
