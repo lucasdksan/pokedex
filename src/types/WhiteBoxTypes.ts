@@ -8,4 +8,5 @@ export type WhiteBoxTypesCss = {
 
 export interface WhiteBoxTypes extends WhiteBoxTypesCss {
     children?: React.ReactNode;
+    activeClass?: boolean;
 }

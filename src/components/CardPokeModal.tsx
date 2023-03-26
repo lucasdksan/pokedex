@@ -119,6 +119,7 @@ const CardPokeModal = ()=>{
                                         valueWidth="150px"
                                         valuePadding="10px 20px"
                                         key={k}
+                                        activeClass
                                     >
                                         <StatesCircleVal 
                                             name={e.name.includes("special-") ? e.name.replace("special-", "Sp ") : e.name}

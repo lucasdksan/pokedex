@@ -3,7 +3,7 @@ import { ModalDropDownCssTypes } from "../../types/ModalDropDownTypes";
 
 export const Container = styled.div<ModalDropDownCssTypes>`
     position: fixed;
-    top: ${ props => props.state ? "0px" : "-100vh" };
+    top: ${ props => props.state ? "0px" : "-600px" };
     left: 0px;
     z-index: 10000;
     width: 100%;

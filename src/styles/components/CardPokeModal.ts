@@ -14,6 +14,11 @@ export const Container = styled.div<CardPokeModalTypesCss>`
     height: 380px;
     background: ${props => props.bg_color};
 
+    @media(max-width: 950px){
+        max-width: 760px;
+        height: 450px;
+    }
+
     .leftArea {
         display: flex;
         flex-direction: column;
@@ -154,6 +159,10 @@ export const Container = styled.div<CardPokeModalTypesCss>`
                 justify-content: space-between;
                 width: 100%;
 
+                @media(max-width: 950px) {
+                    flex-direction: column;
+                }
+
                 .containerLine {
                     display: flex;
                     flex-direction: column;
@@ -186,6 +195,10 @@ export const Container = styled.div<CardPokeModalTypesCss>`
             justify-content: center;
             width: 100%;
             gap: 10px;
+
+            .modif {
+                padding: 10px;
+            }
         }
     }
 `;

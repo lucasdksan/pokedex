@@ -106,6 +106,30 @@ export const Container = styled.div`
                         display: none;
                     }
 
+                    &--mobile {
+                        display: none;
+
+                        @media(max-width: 620px) {
+                            display: block;
+                        }
+
+                        button {
+                            width: auto;
+                            padding: 10px 30px;
+                            border-radius: 20px;
+                            cursor: pointer;
+                            background-color: ${colors.BtnColor};
+
+                            font-family: ${fonts.robo};
+                            font-style: normal;
+                            font-weight: 400;
+                            font-size: 16px;
+                            line-height: 18px;
+                            text-align: center;
+                            color: ${colors.FullWhite};
+                        }
+                    }
+
                     button {
                         width: 100px;
                         padding: 10px 30px;

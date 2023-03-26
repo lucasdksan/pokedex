@@ -8,11 +8,12 @@ import { ModalMobileContext } from "../contexts/ModalMobile";
 
 import iconBtnClose from "../assets/header/closeIcon.svg";
 
-const ModalDropDown = ({ children, height }:ModalDropDownTypes)=>{
-    const { setState, state } = useContext(ModalMobileContext);
+const ModalDropDown = ({ children, height, state }:ModalDropDownTypes)=>{
+    const { setState, setStateOthers } = useContext(ModalMobileContext);
 
     const handleCloseModal = ()=>{
         setState(false);
+        setStateOthers(false);
     }
 
     return(

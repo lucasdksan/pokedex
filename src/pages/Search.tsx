@@ -7,6 +7,8 @@ import Header from "../components/Header";
 import CardSearchPoke from "../components/CardSearchPoke";
 import ModalOpenCard from "../components/ModalOpenCard";
 import Loading from "../components/Loading";
+import UpButton from "../components/UpButton";
+import ModalDropDown from "../components/ModalDropDown";
 
 import { searchPoke } from "../services/get/searchPoke";
 import { getAllPokemons } from "../services/get/allPokemons";
@@ -25,10 +27,10 @@ import pokeView from "../view/pokemonView";
 import pokemonAllView from "../view/pokemonAllView";
 
 import { OpenDataModalContext } from "../contexts/OpenDataModal";
+import { ModalMobileContext } from "../contexts/ModalMobile";
 
 import { filterRT, filterRegion, filterType } from "../libs/filterListPokemon";
 import { personalAlert } from "../libs/alertPkt";
-import UpButton from "../components/UpButton";
 
 const Search = () => {
     const [pokeSearch, setPokeSearch] = useState("");
@@ -43,6 +45,11 @@ const Search = () => {
     const [openMoreBtn, setOpenMoreBtn] = useState(true);
 
     const { SetOpenModal, SetPokemon, SetOpenModalError, SetAllPokemons, allPokemon } = useContext(OpenDataModalContext);
+    const { setStateOthers, stateOthers } = useContext(ModalMobileContext);
+
+    const handleOpenModalOptions = ()=>{
+        setStateOthers(true);
+    }
 
     const handleTempAllPokemon = async () => {
         const arrAllObjsMore = [];
@@ -222,6 +229,9 @@ const Search = () => {
                                 )
                             }
                         </div>
+                        <div className="lineOptions--mobile">
+                            <button onClick={handleOpenModalOptions}>Filter Options</button>
+                        </div>
                     </div>
                     <div className="contentList" style={{ display: allPokemon.length > 0 ? "grid" : "flex" }}>
                         {
@@ -293,6 +303,12 @@ const Search = () => {
             </Container>
             <ModalOpenCard />
             <UpButton />
+            <ModalDropDown
+                height={500}
+                state={stateOthers}
+            >
+
+            </ModalDropDown>
         </>
     );
 }

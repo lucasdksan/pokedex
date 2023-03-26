@@ -17,7 +17,7 @@ const Header = () => {
         legen: false,
         doc: false
     });
-    const { setState } = useContext(ModalMobileContext);
+    const { setState, state } = useContext(ModalMobileContext);
 
     function handlerURL() {
         const url = window.location.pathname;
@@ -101,6 +101,7 @@ const Header = () => {
             </Container>
             <ModalDropDown 
                 height={350}
+                state={state}
             >
                 <div className="containerLinks">
                     <img src={Logo} alt="Logo Image" />
