@@ -31,6 +31,10 @@ export const Container = styled.div`
         @media(max-width: 620px){
             max-width: ${sizes.mobile};
         }
+    
+        @media(max-width: 440px){
+            max-width: ${sizes.mobileEnd};
+        }
 
         h1 {
             font-family: ${fonts.main};
@@ -42,6 +46,11 @@ export const Container = styled.div`
             letter-spacing: 3px;
             color: ${colors.BlackColors};
             margin-bottom: 20px;
+
+            @media(max-width: 620px){
+                font-size: 24px;
+                line-height: 28px;
+            }
         }
 
         div {
@@ -93,6 +102,10 @@ export const Container = styled.div`
                 .lineOptions {
                     padding: 0px 30px;
 
+                    @media(max-width: 620px) {
+                        display: none;
+                    }
+
                     button {
                         width: 100px;
                         padding: 10px 30px;
@@ -111,12 +124,20 @@ export const Container = styled.div`
                         &.btn-clear {
                             background-color: ${colors.DangerColor};
                             margin-left: 20px;
+
+                            @media(max-width: 950px) {
+                                margin-left: 10px;
+                            }
                         }
 
                         &.btn-all {
                             background-color: ${colors.Deuteranopia.d1};
                             margin-left: 20px;
                             width: auto;
+
+                            @media(max-width: 950px) {
+                                margin-left: 10px;
+                            }
                         }
                     }
 
@@ -139,6 +160,10 @@ export const Container = styled.div`
                         padding: 5px 30px;
                         margin: 0px 20px;
 
+                        @media(max-width: 950px) {
+                            margin: 0px 10px;
+                        }
+
                         &:first-child {
                             margin-left: 0px;
                         }
@@ -158,6 +183,20 @@ export const Container = styled.div`
 
                 @media(max-width: 1140px){
                     gap: 15px 8px;
+                }
+
+                @media(max-width: 950px){
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 24px 20px;
+                }
+
+                @media(max-width: 770px){
+                    gap: 15px;
+                }
+
+                @media(max-width: 620px) {
+                    grid-template-columns: repeat(1, 1fr);
+                    width: 100%;
                 }
             }
         }

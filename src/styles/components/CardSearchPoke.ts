@@ -16,7 +16,19 @@ export const Container = styled.div<CardSearchPokeTypesCss>`
     cursor: pointer;
 
     @media(max-width: 1140px){
-        max-width: 300px;
+        width: 300px;
+    }
+
+    @media(max-width: 950px) {
+        width: 350px;
+    }
+
+    @media(max-width: 770px){
+        width: 285px;
+    }
+
+    @media(max-width: 620px) {
+        width: 100%;
     }
     
     .leftArea {
