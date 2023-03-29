@@ -3,7 +3,7 @@ import { ModalDropDownCssTypes } from "../../types/ModalDropDownTypes";
 
 export const Container = styled.div<ModalDropDownCssTypes>`
     position: fixed;
-    top: ${ props => props.state ? "0px" : "-600px" };
+    top: ${ props => props.state ? "0px" : "-700px" };
     left: 0px;
     z-index: 10000;
     width: 100%;
@@ -22,7 +22,7 @@ export const Container = styled.div<ModalDropDownCssTypes>`
 
     transition: top .5s ease-in-out;
 
-    button {
+    button.close-btn {
         background-color: transparent;
         outline: none;
         border: none;
@@ -51,5 +51,14 @@ export const Container = styled.div<ModalDropDownCssTypes>`
                 }
             }
         }
+    }
+
+    .content-filter {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        width: 100%;
     }
 `;

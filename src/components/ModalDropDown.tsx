@@ -21,7 +21,7 @@ const ModalDropDown = ({ children, height, state }:ModalDropDownTypes)=>{
             height={height}
             state={state}
         >
-            <button onClick={handleCloseModal}>
+            <button className="close-btn" onClick={handleCloseModal}>
                 <img src={iconBtnClose} alt="Icon Close" />
             </button>
             {

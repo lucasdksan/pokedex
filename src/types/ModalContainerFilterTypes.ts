@@ -3,4 +3,5 @@ export type ModalContainerFilterTypes = {
         key: string,
         value: string
     }[];
+    label: string;
 }

@@ -31,6 +31,7 @@ import { ModalMobileContext } from "../contexts/ModalMobile";
 
 import { filterRT, filterRegion, filterType } from "../libs/filterListPokemon";
 import { personalAlert } from "../libs/alertPkt";
+import ModalContainerFilter from "../components/ModalContainerFilter";
 
 const Search = () => {
     const [pokeSearch, setPokeSearch] = useState("");
@@ -304,10 +305,30 @@ const Search = () => {
             <ModalOpenCard />
             <UpButton />
             <ModalDropDown
-                height={500}
+                height={600}
                 state={stateOthers}
             >
-
+                <div className="content-filter">
+                    <ModalContainerFilter 
+                        arr={CustomSelectComponentDataType}
+                        label="Type"
+                    />
+                    <ModalContainerFilter 
+                        arr={CustomSelectComponentDataRegion}
+                        label="Region"
+                    />
+                    <div className="btns">
+                        <button onClick={handlePokeFilter}>Filter</button>
+                        <button onClick={handleClearFilter} className="btn-clear">Clear</button>
+                        {
+                            (tempAllPokemon.length > 0) &&
+                            (tempAllPokemon.length !== allPokemon.length) &&
+                            (
+                                <button onClick={handleUpdatePokemon} className="btn-all">All Pokemon</button>
+                            )
+                        }
+                    </div>
+                </div>
             </ModalDropDown>
         </>
     );

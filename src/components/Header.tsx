@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { Container, ContentOptions, Elements, LeftArea, Nav, RightArea, ContentBody, BtnMenu } from "../styles/components/Header";
@@ -20,46 +20,12 @@ const Header = () => {
     const { setState, state } = useContext(ModalMobileContext);
 
     function handlerURL() {
-        const url = window.location.pathname;
-
-        if (url === "/") {
-            setKeys({
-                home: true,
-                pokedex: false,
-                legen: false,
-                doc: false
-            });
-        } else if (url === "pokedex") {
-            setKeys({
-                home: false,
-                pokedex: true,
-                legen: false,
-                doc: false
-            });
-        } else if (url === "legendaries") {
-            setKeys({
-                home: false,
-                pokedex: false,
-                legen: true,
-                doc: false
-            });
-        } else {
-            setKeys({
-                home: false,
-                pokedex: false,
-                legen: false,
-                doc: true
-            });
-        }
+        setState(false);
     }
     
     function handleOpenMenuMobile(){
         setState(true);
     }
-
-    useEffect(() => {
-        handlerURL();
-    }, []);
 
     return (
         <>
@@ -75,7 +41,6 @@ const Header = () => {
                                     <Link
                                         className={keys.home ? "active" : ""}
                                         to="/"
-                                        onClick={handlerURL}
                                     >Home</Link>
                                 </Elements>
                                 <Elements >
@@ -88,7 +53,6 @@ const Header = () => {
                                     <Link
                                         className={keys.legen ? "active" : ""}
                                         to="/legendaries"
-                                        onClick={handlerURL}
                                     >Legendaries</Link>
                                 </Elements>
                             </ContentOptions>
@@ -117,6 +81,7 @@ const Header = () => {
                             <Link
                                 className={keys.pokedex ? "active" : ""}
                                 to="/pokedex"
+                                onClick={handlerURL}
                             >Pokédex</Link>
                         </Elements>
                         <Elements >
