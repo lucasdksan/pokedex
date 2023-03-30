@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors, fonts } from "../themes/index";
 import { ModalDropDownCssTypes } from "../../types/ModalDropDownTypes";
 
 export const Container = styled.div<ModalDropDownCssTypes>`
@@ -60,5 +61,34 @@ export const Container = styled.div<ModalDropDownCssTypes>`
         justify-content: center;
         flex: 1;
         width: 100%;
+
+        .btns {
+            display: flex;
+            gap: 5px;
+
+            button {
+                width: 80px;
+                padding: 10px;
+                border-radius: 20px;
+                cursor: pointer;
+                background-color: ${colors.BtnColor};
+
+                font-family: ${fonts.robo};
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 14px;
+                text-align: center;
+                color: ${colors.FullWhite};
+
+                &.btn-clear {
+                    background-color: ${colors.DangerColor};
+                }
+
+                &.btn-all {
+                    background-color: ${colors.Deuteranopia.d1};
+                }
+            }
+        }
     }
 `;

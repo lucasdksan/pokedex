@@ -9,7 +9,7 @@ const ContentStatusElement = ({ name, value }:ContentStatusElementTypes) => {
         <Container>
             <span>{name}</span>
             <strong>{value}</strong>
-            <LineStatus value={value} />
+            <LineStatus value={value} resp />
         </Container>
     );
 }

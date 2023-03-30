@@ -23,27 +23,27 @@ export const selectColorsForTypeShadow = (type: string)=>{
         case "ghost":
             return colors.GhostShadow;
         case "normal":
-            return colors.NormalFlyingShadow;
+            return colors.NormalShadow;
         case "flying":
-            return colors.NormalFlyingShadow;
+            return colors.FlyingShadow;
         case "fire":  
-            return colors.FireFightingShadow;
+            return colors.FireShadow;
         case "fighting":  
-            return colors.FireFightingShadow;
+            return colors.FightingShadow;
         case "dragon":
             return colors.DragonShadow;
         case "grass":
-            return colors.GrassBugShadow;
+            return colors.GrassShadow;
         case "bug":
-            return colors.GrassBugShadow;
+            return colors.BugShadow;
         case "stile":
-            return colors.StileRockShadow;
+            return colors.StileShadow;
         case "steel":
-            return colors.StileRockShadow;
+            return colors.StileShadow;
         case "dark":
             return colors.DarkShadow;
         case "rock":
-            return colors.StileRockShadow;
+            return colors.RockShadow;
         default:
             return colors.FullWhite;
         break;

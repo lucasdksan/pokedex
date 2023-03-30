@@ -5,9 +5,9 @@ export const selectColorsForType = (type: string)=>{
 
     switch(typeConvert){
         case "ice":
-            return colors.IceWater;
+            return colors.Ice;
         case "water":
-            return colors.IceWater;
+            return colors.Water;
         case "eletric":
             return colors.Eletric;
         case "electric":
@@ -15,35 +15,35 @@ export const selectColorsForType = (type: string)=>{
         case "ground":
             return colors.Ground;
         case "poison":
-            return colors.PosionPsychic;
+            return colors.Posion;
         case "psychic":
-            return colors.PosionPsychic;
+            return colors.Psychic;
         case "fairy":
             return colors.Fairy;
         case "ghost":
             return colors.Ghost;
         case "normal":
-            return colors.NormalFlying;
+            return colors.Normal;
         case "flying":
-            return colors.NormalFlying;
+            return colors.Flying;
         case "fire":  
-            return colors.FireFighting;
+            return colors.Fire;
         case "fighting":  
-            return colors.FireFighting;
+            return colors.Fighting;
         case "dragon":
             return colors.Dragon;
         case "grass":
-            return colors.GrassBug;
+            return colors.Grass;
         case "bug":
-            return colors.GrassBug;
+            return colors.Bug;
         case "stile":
-            return colors.StileRock;
+            return colors.Stile;
         case "steel":
-            return colors.StileRock;
+            return colors.Stile;
         case "dark":
             return colors.Dark;
         case "rock":
-            return colors.StileRock;
+            return colors.Rock;
         default:
             return colors.FullWhite;
         break;

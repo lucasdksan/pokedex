@@ -324,7 +324,7 @@ const Search = () => {
                             (tempAllPokemon.length > 0) &&
                             (tempAllPokemon.length !== allPokemon.length) &&
                             (
-                                <button onClick={handleUpdatePokemon} className="btn-all">All Pokemon</button>
+                                <button onClick={handleUpdatePokemon} className="btn-all">All</button>
                             )
                         }
                     </div>

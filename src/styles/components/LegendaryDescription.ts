@@ -7,25 +7,60 @@ export const Container = styled.div`
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    height: 100vh;
 
     .topContent {
         display: flex;
         flex-direction: row;
 
+        @media(max-width: 770px){
+            flex-direction: column;
+            align-items: center;
+        }
+
         .leftArea {
             width: 60%;
             height: auto;
 
+            @media(max-width: 1200px){
+                width: 45%;
+            }
+
+            @media(max-width: 950px) {
+                width: 40%;
+            }
+
+            @media(max-width: 770px) {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 60%;
+            }
+
             img {
                 width: 60%;
                 height: auto;
+
+                @media(max-width: 1200px){
+                    width: 100%;
+                }
             }
         }
 
         .rightArea {
             width: 40%;
             height: auto;
+
+            @media(max-width: 1200px){
+                width: 55%;
+            }
+
+            @media(max-width: 950px) {
+                width: 60%;
+            }
+
+            @media(max-width: 770px) {
+                width: 100%;
+            }
 
             span.title {
                 font-family: ${fonts.main};
@@ -35,6 +70,16 @@ export const Container = styled.div`
                 line-height: 84px;
                 letter-spacing: 4px;
                 color: ${colors.WhiteThird};
+
+                @media(max-width: 950px) {
+                    font-size: 68px;
+                    line-height: 80px;
+                }
+
+                @media(max-width: 620px) {
+                    font-size: 60px;
+                    line-height: 72px;
+                }
             }
 
             p {
@@ -44,6 +89,11 @@ export const Container = styled.div`
                 font-size: 16px;
                 line-height: 20px;
                 color: ${colors.FullWhite};
+
+                @media(max-width: 950px) {
+                    font-size: 14px;
+                    line-height: 18px;
+                }
             }
 
             .contentStatus {

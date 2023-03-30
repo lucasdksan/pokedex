@@ -15,6 +15,26 @@ export const Container = styled.main`
         flex-direction: column;
         margin: 0 auto;
 
+        @media(max-width: 1200px){
+            max-width: ${sizes.deskEnd};
+        }
+
+        @media(max-width: 950px){
+            max-width: ${sizes.tablet};
+        }
+
+        @media(max-width: 770px){
+            max-width: ${sizes.tabletEnd};
+        }
+
+        @media(max-width: 620px){
+            max-width: ${sizes.mobile};
+        }
+
+        @media(max-width: 500px){
+            max-width: ${sizes.mobileEnd};
+        }
+
         .containerTitle {
             display: flex;
             align-items: center;
@@ -32,6 +52,11 @@ export const Container = styled.main`
                 line-height: 84px;
                 letter-spacing: 4px;
                 color: ${colors.WhiteColor};
+
+                @media(max-width: 500px) {
+                    font-size: 45px;
+                    line-height: 50px;
+                }
             }
         }
     }

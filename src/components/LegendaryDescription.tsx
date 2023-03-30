@@ -27,7 +27,39 @@ const LegendaryDescription = ({ legendaryPokes, defaultPk }:LegendaryDescription
         slidesToScroll: 1,
         centerMode: true,
         nextArrow: <CustomArrowRight />,
-        prevArrow: <CustomArrowLeft />
+        prevArrow: <CustomArrowLeft />,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 5
+                }
+            },
+            {
+                breakpoint: 950,
+                settings: {
+                    slidesToShow: 4
+                }
+            },
+            {
+                breakpoint: 770,
+                settings: {
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 620,
+                settings: {
+                    slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 500,
+                settings: {
+                    slidesToShow: 1
+                }
+            }
+        ]
     };
 
     return (
