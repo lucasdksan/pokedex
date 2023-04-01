@@ -4,4 +4,8 @@ export type ModalContainerFilterTypes = {
         value: string
     }[];
     label: string;
+    arrSelected: string[];
+    setArrSelected: (arr:string[])=>void;
+    elementCheck: boolean;
+    setElementCheck: (e:boolean)=>void;
 }

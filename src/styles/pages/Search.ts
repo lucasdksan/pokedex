@@ -225,6 +225,16 @@ export const Container = styled.div`
             }
         }
 
+        .loading {
+            font-family: ${fonts.robo};
+            font-style: normal;
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 34px;
+            text-align: center;
+            color: ${colors.PrimaryColor};
+        }
+
         .btn-more {
             padding: 10px 30px;
             border-radius: 15px;

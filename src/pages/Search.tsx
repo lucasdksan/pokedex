@@ -38,11 +38,16 @@ const Search = () => {
     const [pokeFileterType, setPokeFileterType] = useState("");
     const [pokeFileterRegion, setPokeFileterRegion] = useState("");
     const [openFilter, setOpenFilter] = useState(false);
+    const [loadingMorePoke, setLoadingMorePoke] = useState(false);
     const [len, setLen] = useState(18);
     const [searchResult, setSearchResult] = useState<pokemonTypes>();
     const [arrDataAllPokemons, setArrDataAllPokemons] = useState<pokemonEntriesTypes[]>([]);
     const [tempAllPokemon, setTempAllPokemon] = useState<pokemonAllSearch[]>([]);
     const [filtedPokemon, setFiltedPokemon] = useState<pokemonAllSearch[]>([]);
+    const [arrTypePoke, setArrTypePoke] = useState<string[]>([]);
+    const [arrRegionPoke, setArrRegionPoke] = useState<string[]>([]);
+    const [clearType, setClearType] = useState<boolean>(false);
+    const [clearRegion, setClearRegion] = useState<boolean>(false);
     const [openMoreBtn, setOpenMoreBtn] = useState(true);
 
     const { SetOpenModal, SetPokemon, SetOpenModalError, SetAllPokemons, allPokemon } = useContext(OpenDataModalContext);
@@ -78,6 +83,8 @@ const Search = () => {
     const handleClearFilter = () => {
         setOpenFilter(false);
         setFiltedPokemon([]);
+        setArrTypePoke([]);
+        setArrRegionPoke([]);
     }
 
     const handlePokeFilter = () => {
@@ -108,6 +115,31 @@ const Search = () => {
         } else {
             personalAlert("Select one of the filter elements!!");
         }
+    }
+
+    const handlePokeFilterMobile = ()=>{
+        if(tempAllPokemon.length === 0 || tempAllPokemon.length < allPokemon.length) {
+            personalAlert("Waiting for update of all pokemons");
+        }
+
+        if(arrRegionPoke.length > 0 || arrTypePoke.length > 0){
+            if (arrRegionPoke.length === 0 && arrTypePoke.length > 0) {
+                let arrType:pokemonAllSearch[] = [];
+
+                arrTypePoke.forEach((e,k)=>{
+                    let temp = filterType(e, allPokemon);
+                    
+                    temp.forEach((Etemp, Ktemp)=>{
+                        arrType.push(Etemp)
+                    });
+                });
+                
+                setFiltedPokemon(arrType);
+            }
+        }
+
+        setOpenFilter(true);
+        setOpenMoreBtn(false);
     }
 
     const handleUpdatePokemon= ()=>{
@@ -160,6 +192,8 @@ const Search = () => {
 
         let lenMore = len < arrDataAllPokemons.length ? len + 18 : arrDataAllPokemons.length;
 
+        setLoadingMorePoke(true);
+
         if (arrDataAllPokemons.length > 0) {
             for (let i = len; i < lenMore; i++) {
                 let obj = await searchDataPoke(arrDataAllPokemons[i]);
@@ -169,6 +203,7 @@ const Search = () => {
 
         SetAllPokemons(arrAllObjsMore);
         setLen(lenMore);
+        setLoadingMorePoke(false);
     }
 
     useEffect(() => {
@@ -192,6 +227,8 @@ const Search = () => {
         }
         handleTempAllPokemon();
     }, [arrDataAllPokemons]);
+
+    useEffect(()=>{console.log(filtedPokemon)},[filtedPokemon]);
 
     return (
         <>
@@ -291,7 +328,13 @@ const Search = () => {
                         }
                     </div>
                     {
+                        loadingMorePoke && (
+                            <span className="loading">Loading...</span>
+                        )
+                    }
+                    {
                         (allPokemon.length > 0 && openMoreBtn) &&
+                        (!loadingMorePoke)&&
                         (
                             <button
                                 className="btn-more"
@@ -312,13 +355,21 @@ const Search = () => {
                     <ModalContainerFilter 
                         arr={CustomSelectComponentDataType}
                         label="Type"
+                        arrSelected={arrTypePoke}
+                        setArrSelected={setArrTypePoke}
+                        elementCheck={clearType}
+                        setElementCheck={setClearType}
                     />
                     <ModalContainerFilter 
                         arr={CustomSelectComponentDataRegion}
                         label="Region"
+                        arrSelected={arrRegionPoke}
+                        setArrSelected={setArrRegionPoke}
+                        elementCheck={clearRegion}
+                        setElementCheck={setClearRegion}
                     />
                     <div className="btns">
-                        <button onClick={handlePokeFilter}>Filter</button>
+                        <button onClick={handlePokeFilterMobile}>Filter</button>
                         <button onClick={handleClearFilter} className="btn-clear">Clear</button>
                         {
                             (tempAllPokemon.length > 0) &&
