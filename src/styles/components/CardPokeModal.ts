@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { CardPokeModalTypesCss } from "../../types/CardPokeModalTypes";
-import { colors, fonts } from "../themes";
+import { colors, fonts, sizes } from "../themes";
 
 export const Container = styled.div<CardPokeModalTypesCss>`
     overflow: hidden;
@@ -15,8 +15,22 @@ export const Container = styled.div<CardPokeModalTypesCss>`
     background: ${props => props.bg_color};
 
     @media(max-width: 950px){
-        max-width: 760px;
+        max-width: ${sizes.tablet};
         height: 450px;
+    }
+
+    @media(max-width: 768px){
+        max-width: ${sizes.tabletEnd};
+        flex-direction: column;
+        height: auto;
+    }
+
+    @media(max-width: 620px) {
+        max-width: ${sizes.mobile};
+    }
+
+    @media(max-width: 440px) {
+        max-width: ${sizes.mobileEnd};
     }
 
     .leftArea {
@@ -29,6 +43,13 @@ export const Container = styled.div<CardPokeModalTypesCss>`
         height: 100%;
         box-shadow: 4px 4px 8px rgba(1, 28, 64, 0.2);
 
+        @media(max-width: 768px) {
+            width: 100%;
+            height: auto;
+            background: linear-gradient(180deg, ${props=>props.bg_color_shadow}, 42.19%, transparent 100%);
+            box-shadow: 4px 4px 8px transparent;
+        }
+
         .areaImgs {
             display: flex;
             align-items: center;
@@ -39,6 +60,10 @@ export const Container = styled.div<CardPokeModalTypesCss>`
             img {
                 width: 100%;
                 height: auto;
+
+                @media(max-width: 768px) {
+                    width: 50%;
+                }
             }
         }
 
@@ -79,6 +104,16 @@ export const Container = styled.div<CardPokeModalTypesCss>`
         padding: 30px 20px;
         background: linear-gradient(180deg, ${props=>props.bg_color_shadow}, 42.19%, transparent 100%);
 
+        @media(max-width: 768px) {
+            width: 100%;
+            background: transparent;
+            padding: 20px;
+        }
+
+        @media(max-width: 440px) {
+            padding: 10px;
+        }
+
         .topCard {
             display: flex;
             align-items: center;
@@ -93,6 +128,10 @@ export const Container = styled.div<CardPokeModalTypesCss>`
                 line-height: 42px;
                 color: ${colors.WhiteThird};
                 text-shadow: 4px 4px 4px rgba(33, 33, 33, 0.1);
+
+                @media(max-width: 620px) {
+                    font-size: 28px;
+                }
             }
 
             span {
@@ -103,6 +142,10 @@ export const Container = styled.div<CardPokeModalTypesCss>`
                 line-height: 30px;
                 text-align: center;
                 color: ${colors.WhiteThird};
+
+                @media(max-width: 620px) {
+                    font-size: 20px;
+                }
             }
 
             .circleCode {
@@ -122,6 +165,18 @@ export const Container = styled.div<CardPokeModalTypesCss>`
 
                 text-align: center;
                 color: ${colors.BlackColors};
+
+                @media(max-width: 620px) {
+                    width: 36px;
+                    height: 36px;
+                    font-size: 14px;
+                }
+
+                @media(max-width: 440px) {
+                    width: 26px;
+                    height: 26px;
+                    font-size: 12px;
+                }
             }
         }
 
@@ -163,6 +218,14 @@ export const Container = styled.div<CardPokeModalTypesCss>`
                     flex-direction: column;
                 }
 
+                @media(max-width: 768px) {
+                    flex-direction: row;
+                }
+
+                @media(max-width: 620px) {
+                    flex-direction: column;
+                }
+
                 .containerLine {
                     display: flex;
                     flex-direction: column;
@@ -198,6 +261,21 @@ export const Container = styled.div<CardPokeModalTypesCss>`
 
             .modif {
                 padding: 10px;
+
+                @media(max-width: 440px){
+                    .circle {
+                        width: 35px;
+                        height: 35px;
+                    }
+
+                    span {
+                        font-size: 9px;
+                    }
+                }
+            }
+
+            @media(max-width: 768px) {
+                margin-top: 10px;
             }
         }
     }

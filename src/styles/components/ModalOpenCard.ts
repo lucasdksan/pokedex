@@ -22,6 +22,7 @@ export const Container = styled.section<ModalOpenCardCss>`
         position: absolute;
         top: 30px;
         right: 50px;
+        z-index: 1000;
         
         img {
             opacity: 1;

@@ -15,7 +15,6 @@ import { pokemonAllViewTypes } from "../types/pokemonAllViewTypes";
 import pokemonAllView from "../view/pokemonAllView";
 
 const LegendaryDescription = ({ legendaryPokes, defaultPk }:LegendaryDescriptionTypes) => {
-    console.log("Lucas: ", legendaryPokes);
     const undefinedText = "undefined";
     
     const [ pokeView, setPokeView ] = useState<pokemonAllViewTypes>(defaultPk);

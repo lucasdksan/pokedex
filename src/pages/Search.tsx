@@ -81,10 +81,18 @@ const Search = () => {
     }
 
     const handleClearFilter = () => {
+        const allInputsFilter = document.querySelectorAll(".containerInputs .unity input") as NodeListOf<HTMLInputElement>;
+
         setOpenFilter(false);
         setFiltedPokemon([]);
         setArrTypePoke([]);
         setArrRegionPoke([]);
+
+        allInputsFilter.forEach((checkbox) => {
+            if (checkbox.checked) {
+                checkbox.checked = false;
+            }
+        });
     }
 
     const handlePokeFilter = () => {
@@ -130,11 +138,38 @@ const Search = () => {
                     let temp = filterType(e, allPokemon);
                     
                     temp.forEach((Etemp, Ktemp)=>{
-                        arrType.push(Etemp)
+                        arrType.push(Etemp);
                     });
                 });
                 
                 setFiltedPokemon(arrType);
+            } else if(arrRegionPoke.length > 0 && arrTypePoke.length === 0){
+                let arrRegion:pokemonAllSearch[] = [];
+
+                arrRegionPoke.forEach((e,k)=>{
+                    let temp = filterRegion(e, allPokemon);
+
+                    temp.forEach((Etemp, Ktemp)=>{
+                        arrRegion.push(Etemp);
+                    });
+                });
+
+                setFiltedPokemon(arrRegion);
+            } else {
+                let arrRT:pokemonAllSearch[] = [];
+                var temp;
+                
+                for(let i = 0; i < arrTypePoke.length; i++){
+                    for(let j = 0; j < arrRegionPoke.length; j++){
+                        temp = filterRT(arrTypePoke[i], arrRegionPoke[j], allPokemon);
+
+                        temp.forEach((Etemp, Ktemp)=>{
+                            arrRT.push(Etemp);
+                        });
+                    }
+                }
+
+                setFiltedPokemon(arrRT);
             }
         }
 
@@ -227,8 +262,6 @@ const Search = () => {
         }
         handleTempAllPokemon();
     }, [arrDataAllPokemons]);
-
-    useEffect(()=>{console.log(filtedPokemon)},[filtedPokemon]);
 
     return (
         <>

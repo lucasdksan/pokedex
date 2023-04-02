@@ -34,8 +34,7 @@ const ModalContainerFilter = ({ arr, label, arrSelected, elementCheck, setArrSel
                                     onChange={(e)=>{handleChangeInput(e.target.value)}} 
                                     id={`${e.key}-key`} 
                                     value={e.key} 
-                                    type="checkbox" 
-                                    checked={elementCheck}
+                                    type="checkbox"
                                 />
                                 <label htmlFor={`${e.key}-key`}>{e.value}</label>
                             </div>

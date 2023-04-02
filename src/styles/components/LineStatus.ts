@@ -3,11 +3,7 @@ import { ColorType } from "../../types/LineStatusTypes";
 import { colors } from "../themes";
 
 const convertPixes = (value: number)=>{
-    console.log("value: ", value)
-
     let result = value/2;
-
-    console.log("result: ", result)
 
     return `${result}px`;
 }
